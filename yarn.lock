@@ -6794,6 +6794,11 @@ hex-color-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
 
+highlight.js@^10.1.2:
+  version "10.3.2"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-10.3.2.tgz#135fd3619a00c3cbb8b4cd6dbc78d56bfcbc46f1"
+  integrity sha512-3jRT7OUYsVsKvukNKZCtnvRcFyCJqSEIuIMsEybAXRiFSwpt65qjPd/Pr+UOdYt7WJlt+lj3+ypUsHiySBp/Jw==
+
 hmac-drbg@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
@@ -9966,6 +9971,13 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
+nuxt-highlightjs@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/nuxt-highlightjs/-/nuxt-highlightjs-1.0.1.tgz#6809a9ccebfff8993d69a85a9095650069268d66"
+  integrity sha512-T3GHysg8c3EBkTL4mj6NftsiYo/FBID1/XWgprT3+RHX7pBhl4Spbc2yygp4z/OBEvgs868Qg5FIkIsCBS+iPg==
+  dependencies:
+    highlight.js "^10.1.2"
+
 nuxt@^2.14.6:
   version "2.14.7"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.14.7.tgz#041bb3f5c659b1fec80042d974f68a0ed4e93aa9"
@@ -11419,6 +11431,11 @@ pretty@^2.0.0:
     condense-newlines "^0.2.1"
     extend-shallow "^2.0.1"
     js-beautify "^1.6.12"
+
+prism-es6@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/prism-es6/-/prism-es6-1.2.0.tgz#ead4e0d7809fefc36b9636f1ea4b2cebad074e63"
+  integrity sha512-A8JV9G2zKM8PWksT7YJcmnaWtYO6C9hSfxM/xv0RxB2aNc8rjv30WakzIw1gWyqLi2eiqquo2KmS7orxqlm+yg==
 
 process-nextick-args@~2.0.0:
   version "2.0.1"
@@ -14581,6 +14598,14 @@ vue-client-only@^2.0.0:
   resolved "https://registry.yarnpkg.com/vue-client-only/-/vue-client-only-2.0.0.tgz#ddad8d675ee02c761a14229f0e440e219de1da1c"
   integrity sha512-arhk1wtWAfLsJyxGMoEYhoBowM87/i6HLSG2LH/03Yog6i2d9JEN1peMP0Ceis+/n9DxdenGYZZTxbPPJyHciA==
 
+vue-code-highlight@^0.7.6:
+  version "0.7.6"
+  resolved "https://registry.yarnpkg.com/vue-code-highlight/-/vue-code-highlight-0.7.6.tgz#12f1f019f45ba79934285816cde3831ebb18ac2b"
+  integrity sha512-AIiB8Wlx93fz3GXtWR83B82Lu9a2I1ui8NtVFkEJfH51xFACvwyCwc5QaBtkX3Ojlw0qIfU6Fatb9+Baryxvfw==
+  dependencies:
+    prism-es6 "^1.2.0"
+    vue "^2.5.16"
+
 vue-eslint-parser@^7.0.0:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-7.1.1.tgz#c43c1c715ff50778b9a7e9a4e16921185f3425d3"
@@ -14686,7 +14711,7 @@ vue-template-es2015-compiler@^1.6.0, vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@^2.6.12:
+vue@^2.5.16, vue@^2.6.12:
   version "2.6.12"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"
   integrity sha512-uhmLFETqPPNyuLLbsKz6ioJ4q7AZHzD8ZVFNATNyICSZouqP2Sz0rotWQC8UNBF6VGSCs5abnKJoStA6JbCbfg==
