@@ -23,16 +23,19 @@
         </li>
       </template>
     </DNavbar>
+    <Basejobform />
   </div>
 </template>
 
 <script>
 import { DNavbar, BrownLogo, CCVLogo } from '@brown-ccv/disco-vue-components'
+import Basejobform from '~/components/Basejobform.vue'
 export default {
   components: {
     DNavbar,
     BrownLogo,
     CCVLogo,
+    Basejobform,
   },
 }
 </script>
