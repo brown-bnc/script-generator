@@ -3,7 +3,6 @@
     <Navbar />
     <Basejobform />
     <Sbatchscript partition="CPU" :jobname="jobname" />
-    {{ jobname }}
   </div>
 </template>
 

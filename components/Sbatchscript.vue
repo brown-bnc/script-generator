@@ -1,12 +1,25 @@
 <template>
-  <pre>
-    <code v-highlight>#SBATCH {{partition}} {{jobname}} {{this.jobname2}}</code>
-    <h1> {{jobname}} </h1>
+  <div>
+    <pre>
+    <code>
+        <fragment v-if="jobname">1. Array {{jobname}}</fragment>
+        <fragment>2. Extra tag method</fragment>
+        <fragment>3. fragments</fragment>
+    </code>
   </pre>
+    <prism lang="bash"> a=1 </prism>
+  </div>
 </template>
 
 <script>
+// import { component as VueCodeHighlight } from 'vue-code-highlight'
+import { Fragment } from 'vue-fragment'
+
 export default {
+  components: {
+    Fragment,
+    // VueCodeHighlight,
+  },
   data() {
     return {
       jobname2: 'hi',

@@ -3,7 +3,7 @@ export default {
   ssr: false,
 
   // Target (https://go.nuxtjs.dev/config-target)
-  target: 'static',
+  target: '',
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -20,7 +20,7 @@ export default {
   css: ['@brown-ccv/disco-styles'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [],
+  plugins: [{ src: '~/plugins/prism', mode: 'client' }],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
