@@ -3,21 +3,22 @@
     <div class="field">
       <label class="label">Partition</label>
       <div class="buttons">
-        <button class="button is-primary is-light">CPU</button>
-        <button class="button is-primary is-light">GPU</button>
+        <button class="button is-primary is-light" @click="partition = 'cpu'">
+          CPU
+        </button>
+        <button class="button is-primary is-light" @click="partition = 'gpu'">
+          GPU
+        </button>
+        {{ partition }}
       </div>
     </div>
 
     <div class="field">
       <label class="label">Job Name</label>
       <div class="control">
-        <input
-          class="input"
-          type="text"
-          placeholder="Job Name"
-          value="xnat-tools"
-        />
+        <input class="input" v-model="jobname" type="text" placeholder="Test" />
       </div>
+      {{ $store.getters['getJobName'] }}
     </div>
 
     <div class="field">
@@ -86,5 +87,21 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      partition: 'cpu',
+    }
+  },
+  computed: {
+    jobname: {
+      get() {
+        return this.$store.getters.getJobName
+      },
+      set(value) {
+        this.$store.dispatch('setJobName', value)
+      },
+    },
+  },
+}
 </script>

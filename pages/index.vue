@@ -2,7 +2,8 @@
   <div>
     <Navbar />
     <Basejobform />
-    <Sbatchscript partition="CPU" job-name="test" />
+    <Sbatchscript partition="CPU" :jobname="jobname" />
+    {{ jobname }}
   </div>
 </template>
 
@@ -16,6 +17,11 @@ export default {
     Navbar,
     Basejobform,
     Sbatchscript,
+  },
+  computed: {
+    jobname() {
+      return this.$store.getters.getJobName
+    },
   },
 }
 </script>
