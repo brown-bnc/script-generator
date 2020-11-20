@@ -2,23 +2,35 @@
   <div>
     <div class="field">
       <label class="label">Partition</label>
-      <div class="buttons">
-        <button class="button is-primary is-light" @click="partition = 'cpu'">
-          CPU
-        </button>
-        <button class="button is-primary is-light" @click="partition = 'gpu'">
-          GPU
-        </button>
-        {{ partition }}
-      </div>
+      <input
+        id="cpu"
+        v-model="partition"
+        class="is-checkradio"
+        type="radio"
+        value="CPU"
+      />
+      <label for="cpu">CPU</label>
+      <input
+        id="gpu"
+        v-model="partition"
+        class="is-checkradio"
+        type="radio"
+        value="GPU"
+      />
+      <label for="gpu">GPU</label>
     </div>
 
     <div class="field">
       <label class="label">Job Name</label>
       <div class="control">
-        <input class="input" v-model="jobname" type="text" placeholder="Test" />
+        <input
+          v-model="jobname"
+          class="input"
+          type="text"
+          placeholder="Test"
+          @keyup="setJobName"
+        />
       </div>
-      {{ $store.getters['getJobName'] }}
     </div>
 
     <div class="field">
@@ -90,18 +102,25 @@
 export default {
   data() {
     return {
-      partition: 'cpu',
+      jobname: '',
+      partition: 'CPU',
     }
   },
-  computed: {
-    jobname: {
-      get() {
-        return this.$store.getters.getJobName
-      },
-      set(value) {
-        this.$store.dispatch('setJobName', value)
-      },
+  watch: {
+    partition(newValue, oldValue) {
+      this.setPartition(newValue)
+    },
+  },
+  methods: {
+    setJobName() {
+      this.$store.dispatch('setJobName', this.jobname)
+    },
+    setPartition(value) {
+      this.$store.dispatch('setPartition', value)
     },
   },
 }
 </script>
+<style lang="scss">
+@import '~bulma-checkradio';
+</style>

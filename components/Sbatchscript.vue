@@ -1,23 +1,13 @@
 <template>
   <div>
-    <code>
-      <pre class="language-bash">
-      <fragment v-if="jobname">#SBATCH --jobname {{ jobname }}</fragment>
-      <fragment v-if="partition">#SBATCH --partition {{ partition }}</fragment>
-    </pre>
-    </code>
+    <prism :key="prismKey" lang="bash">
+      {{ batchScpript }}
+    </prism>
   </div>
 </template>
 
 <script>
-import { Fragment } from 'vue-fragment'
-import Prism from 'prismjs'
-import 'prismjs/themes/prism-tomorrow.css'
-import 'prismjs/components/prism-bash'
 export default {
-  components: {
-    Fragment,
-  },
   props: {
     partition: {
       type: String,
@@ -53,8 +43,29 @@ export default {
       default: null,
     },
   },
-  mounted() {
-    Prism.highlightAll()
+  data() {
+    return {
+      prismKey: 'prism',
+    }
+  },
+  computed: {
+    batchScpript() {
+      const script = ['##### SBATCH SCRIPT ######']
+      if (this.jobname) script.push(`#SBATCH --jobname ${this.jobname}`)
+      if (this.partition) script.push(`#SBATCH --partition ${this.partition}`)
+      // TODO: Add other lines here
+      return script.join('\n')
+    },
+  },
+  watch: {
+    batchScpript() {
+      this.updateKey()
+    },
+  },
+  methods: {
+    updateKey() {
+      this.prismKey = 'prism' + Math.floor(Math.random() * 100 + 1)
+    },
   },
 }
 </script>

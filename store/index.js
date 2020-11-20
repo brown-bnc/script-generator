@@ -48,24 +48,3 @@ export const actions = {
     commit('SET_NProcesses', payload)
   },
 }
-
-export const getters = {
-  getJobName(state) {
-    return state.job_name
-  },
-  getPartition(state) {
-    return state.partition
-  },
-  getEmail(state) {
-    return state.email
-  },
-  getEmailEvent(state) {
-    return state.emailevent
-  },
-  getNNodes(state) {
-    return state.nnodes
-  },
-  getNProcesses(state) {
-    return state.nprocesses
-  },
-}
