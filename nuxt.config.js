@@ -20,7 +20,7 @@ export default {
   css: ['@brown-ccv/disco-styles'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [{ src: '~/plugins/prism', mode: 'client' }],
+  plugins: [],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -45,11 +45,17 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+    /*
+     ** You can extend webpack config here
+     */
     hotMiddleware: {
       client: {
         // turn off client overlay when errors are present
-        overlay: true,
+        overlay: false,
       },
+    },
+    extend(config, { isDev, isClient }) {
+      config.resolve.alias.vue = 'vue/dist/vue.common'
     },
   },
 }

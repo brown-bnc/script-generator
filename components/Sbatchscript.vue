@@ -1,29 +1,22 @@
 <template>
   <div>
-    <pre>
     <code>
-        <fragment v-if="jobname">1. Array {{jobname}}</fragment>
-        <fragment>2. Extra tag method</fragment>
-        <fragment>3. fragments</fragment>
+      <pre class="language-bash">
+      <fragment v-if="jobname">#SBATCH --jobname {{ jobname }}</fragment>
+      <fragment v-if="partition">#SBATCH --partition {{ partition }}</fragment>
+    </pre>
     </code>
-  </pre>
-    <prism lang="bash"> a=1 </prism>
   </div>
 </template>
 
 <script>
-// import { component as VueCodeHighlight } from 'vue-code-highlight'
 import { Fragment } from 'vue-fragment'
-
+import Prism from 'prismjs'
+import 'prismjs/themes/prism-tomorrow.css'
+import 'prismjs/components/prism-bash'
 export default {
   components: {
     Fragment,
-    // VueCodeHighlight,
-  },
-  data() {
-    return {
-      jobname2: 'hi',
-    }
   },
   props: {
     partition: {
@@ -31,16 +24,37 @@ export default {
       required: true,
     },
     jobname: {
+      type: String,
       required: true,
     },
-  },
-  watch: {
-    // This would be called anytime the value of title changes
-    jobname(newValue, oldValue) {
-      console.log(newValue)
-      this.jobname2 = newValue
-      // you can do anything here with the new value or old/previous value
+    email: {
+      type: String,
+      required: false,
+      default: null,
     },
+    emailevent: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    nnodes: {
+      type: Number,
+      required: false,
+      default: null,
+    },
+    nprocesses: {
+      type: Number,
+      required: false,
+      default: null,
+    },
+    memory: {
+      type: Number,
+      required: false,
+      default: null,
+    },
+  },
+  mounted() {
+    Prism.highlightAll()
   },
 }
 </script>

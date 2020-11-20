@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Basejobform from '~/components/Basejobform.vue'
 import Navbar from '~/components/Navbar.vue'
 import Sbatchscript from '~/components/Sbatchscript.vue'
@@ -18,9 +19,7 @@ export default {
     Sbatchscript,
   },
   computed: {
-    jobname() {
-      return this.$store.getters.getJobName
-    },
+    ...mapGetters({ jobname: 'getJobName' }),
   },
 }
 </script>
