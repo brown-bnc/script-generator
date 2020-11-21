@@ -1,60 +1,33 @@
 <template>
-  <div>
-    <code>
-      <pre class="language-bash">
-      <fragment v-if="jobname">#SBATCH --jobname {{ jobname }}</fragment>
-      <fragment v-if="partition">#SBATCH --partition {{ partition }}</fragment>
+  <prism lang="bash" :key="jobname">
+    <pre>
+     <fragment v-if="jobname">#SBATCH --jobname {{ jobname }}</fragment>
+     <fragment v-if="partition">#SBATCH --partition {{ partition }}</fragment>
+     <fragment v-if="email">#SBATCH --email {{ email }}</fragment>
+     <fragment v-if="emailevent">#SBATCH --emailevent {{ emailevent }}</fragment>
+     <fragment v-if="nnodes">#SBATCH --nnodes {{ nnodes }}</fragment>
+     <fragment v-if="nprocesses">#SBATCH --nprocesses {{ nprocesses }}</fragment>
+     <fragment v-if="memory">#SBATCH --memory {{ memory }}</fragment>
     </pre>
-    </code>
-  </div>
+  </prism>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { Fragment } from 'vue-fragment'
-import Prism from 'prismjs'
-import 'prismjs/themes/prism-tomorrow.css'
-import 'prismjs/components/prism-bash'
+
 export default {
   components: {
     Fragment,
   },
-  props: {
-    partition: {
-      type: String,
-      required: true,
-    },
-    jobname: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    emailevent: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    nnodes: {
-      type: Number,
-      required: false,
-      default: null,
-    },
-    nprocesses: {
-      type: Number,
-      required: false,
-      default: null,
-    },
-    memory: {
-      type: Number,
-      required: false,
-      default: null,
-    },
-  },
-  mounted() {
-    Prism.highlightAll()
-  },
+  computed: mapState([
+    'jobname',
+    'partition',
+    'email',
+    'emailevent',
+    'nnodes',
+    'nprocesses',
+    'memory',
+  ]),
 }
 </script>

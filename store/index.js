@@ -1,6 +1,6 @@
 export const state = () => ({
   partition: 'CPU',
-  job_name: 'test',
+  jobname: 'test',
   email: null,
   emailevent: null,
   nnodes: 1,
@@ -9,7 +9,7 @@ export const state = () => ({
 
 export const mutations = {
   SET_JOBNAME(state, payload) {
-    state.job_name = payload
+    state.jobname = payload
   },
   SET_PARTITION(state, payload) {
     state.partition = payload
@@ -51,7 +51,7 @@ export const actions = {
 
 export const getters = {
   getJobName(state) {
-    return state.job_name
+    return state.jobname
   },
   getPartition(state) {
     return state.partition

@@ -2,12 +2,11 @@
   <div>
     <Navbar />
     <Basejobform />
-    <Sbatchscript partition="CPU" :jobname="jobname" />
+    <Sbatchscript />
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import Basejobform from '~/components/Basejobform.vue'
 import Navbar from '~/components/Navbar.vue'
 import Sbatchscript from '~/components/Sbatchscript.vue'
@@ -17,9 +16,6 @@ export default {
     Navbar,
     Basejobform,
     Sbatchscript,
-  },
-  computed: {
-    ...mapGetters({ jobname: 'getJobName' }),
   },
 }
 </script>
