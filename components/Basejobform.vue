@@ -98,30 +98,11 @@
 </template>
 
 <script>
+import { mapFields } from 'vuex-map-fields'
+
 export default {
   computed: {
-    jobname: {
-      get() {
-        return this.$store.state.jobname
-      },
-      set(value) {
-        this.$store.dispatch('setStateProperty', {
-          property: 'jobname',
-          value,
-        })
-      },
-    },
-    partition: {
-      get() {
-        return this.$store.state.partition
-      },
-      set(value) {
-        this.$store.dispatch('setStateProperty', {
-          property: 'partition',
-          value,
-        })
-      },
-    },
+    ...mapFields(['jobname', 'partition']),
   },
 }
 </script>

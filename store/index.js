@@ -1,3 +1,5 @@
+import { getField, updateField } from 'vuex-map-fields'
+
 export const state = () => ({
   partition: 'BATCH',
   condo: null,
@@ -11,18 +13,9 @@ export const state = () => ({
 })
 
 export const mutations = {
-  mutate(state, payload) {
-    console.log(payload.property)
-    console.log(payload.with)
-    state[payload.property] = payload.with
-  },
+  updateField,
 }
 
-export const actions = {
-  setStateProperty({ commit }, payload) {
-    commit('mutate', {
-      property: payload.property,
-      with: payload.value,
-    })
-  },
+export const getters = {
+  getField,
 }
