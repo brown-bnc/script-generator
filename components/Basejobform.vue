@@ -105,7 +105,10 @@ export default {
         return this.$store.state.jobname
       },
       set(value) {
-        this.$store.dispatch('setState', 'jobname', value)
+        this.$store.dispatch('setStateProperty', {
+          property: 'jobname',
+          value,
+        })
       },
     },
     partition: {
@@ -113,7 +116,10 @@ export default {
         return this.$store.state.partition
       },
       set(value) {
-        this.$store.dispatch('setState', 'partition', value)
+        this.$store.dispatch('setStateProperty', {
+          property: 'partition',
+          value,
+        })
       },
     },
   },
