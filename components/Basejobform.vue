@@ -102,18 +102,18 @@ export default {
   computed: {
     jobname: {
       get() {
-        return this.$store.jobname
+        return this.$store.state.jobname
       },
       set(value) {
-        this.$store.dispatch('setJobName', value)
+        this.$store.dispatch('setState', 'jobname', value)
       },
     },
     partition: {
       get() {
-        return this.$store.partition
+        return this.$store.state.partition
       },
       set(value) {
-        this.$store.dispatch('setPartition', value)
+        this.$store.dispatch('setState', 'partition', value)
       },
     },
   },

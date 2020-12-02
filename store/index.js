@@ -11,6 +11,10 @@ export const state = () => ({
 })
 
 export const mutations = {
+  SET_STATE(state, prop, payload) {
+    console.log(state[prop])
+    state[prop] = payload
+  },
   SET_JOBNAME(state, payload) {
     state.jobname = payload
   },
@@ -41,6 +45,10 @@ export const mutations = {
 }
 
 export const actions = {
+  setState({ commit }, prop, payload) {
+    console.log(prop)
+    commit('SET_STATE', prop, payload)
+  },
   setJobName({ commit }, payload) {
     commit('SET_JOBNAME', payload)
   },
