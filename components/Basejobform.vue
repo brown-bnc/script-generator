@@ -1,24 +1,35 @@
 <template>
   <div>
     <div class="field">
-      <label class="label">Partition</label>
-      <div class="buttons">
-        <button class="button is-primary is-light" @click="partition = 'cpu'">
-          CPU
-        </button>
-        <button class="button is-primary is-light" @click="partition = 'gpu'">
-          GPU
-        </button>
-        {{ partition }}
-      </div>
+      <label class="label">Partition (Default: Batch)</label>
+      <input
+        id="batch-radio"
+        v-model="partition"
+        class="is-checkradio"
+        type="radio"
+        value="BATCH"
+      />
+      <label for="batch-radio">BATCH</label>
+      <input
+        id="gpu-radio"
+        v-model="partition"
+        class="is-checkradio"
+        type="radio"
+        value="GPU"
+      />
+      <label for="gpu-radio">GPU</label>
     </div>
 
     <div class="field">
       <label class="label">Job Name</label>
       <div class="control">
-        <input class="input" v-model="jobname" type="text" placeholder="Test" />
+        <input
+          class="input"
+          v-model="jobname"
+          type="text"
+          placeholder="Name of this job"
+        />
       </div>
-      {{ $store.getters['getJobName'] }}
     </div>
 
     <div class="field">
@@ -88,18 +99,21 @@
 
 <script>
 export default {
-  data() {
-    return {
-      partition: 'cpu',
-    }
-  },
   computed: {
     jobname: {
       get() {
-        return this.$store.getters.getJobName
+        return this.$store.jobname
       },
       set(value) {
         this.$store.dispatch('setJobName', value)
+      },
+    },
+    partition: {
+      get() {
+        return this.$store.partition
+      },
+      set(value) {
+        this.$store.dispatch('setPartition', value)
       },
     },
   },
