@@ -7,9 +7,10 @@ export const state = () => ({
   nnodes: 1,
   ncpus: 1,
   memory: 16,
-  time: '1:00:00',
+  time: { hours: 1, minutes: 0, seconds: 0 },
   email: null,
-  emailevent: null,
+  emailevents: [],
+  output: '/gpfs/scratch/%u/test-%j.out',
 })
 
 export const mutations = {

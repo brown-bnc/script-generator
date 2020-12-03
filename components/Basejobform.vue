@@ -1,99 +1,197 @@
 <template>
   <div>
-    <div class="field">
-      <label class="label">Partition (Default: Batch)</label>
-      <input
-        id="batch-radio"
-        v-model="partition"
-        class="is-checkradio"
-        type="radio"
-        value="BATCH"
-      />
-      <label for="batch-radio">BATCH</label>
-      <input
-        id="gpu-radio"
-        v-model="partition"
-        class="is-checkradio"
-        type="radio"
-        value="GPU"
-      />
-      <label for="gpu-radio">GPU</label>
-    </div>
+    <section>
+      <b-collapse
+        class="card"
+        animation="slide"
+        :key="0"
+        :open="isOpen == 0"
+        @open="isOpen = 0"
+      >
+        <div
+          slot="trigger"
+          slot-scope="props"
+          class="card-header"
+          role="button"
+        >
+          <p class="card-header-title">
+            SBATCH General: Jobname, Queue and Condo
+          </p>
+          <a class="card-header-icon">
+            <b-icon :icon="props.open ? 'menu-down' : 'menu-up'"> </b-icon>
+          </a>
+        </div>
+        <div class="card-content">
+          <div class="content">
+            <label class="label">Job Name</label>
+            <div class="control">
+              <input
+                class="input"
+                v-model="jobname"
+                type="text"
+                placeholder="Name of this job"
+              />
+            </div>
 
-    <div class="field">
-      <label class="label">Job Name</label>
-      <div class="control">
-        <input
-          class="input"
-          v-model="jobname"
-          type="text"
-          placeholder="Name of this job"
-        />
-      </div>
-    </div>
+            <label class="label">Partition (Default: Batch)</label>
+            <input
+              id="batch-radio"
+              v-model="partition"
+              class="is-checkradio"
+              type="radio"
+              value="BATCH"
+            />
+            <label for="batch-radio">BATCH</label>
+            <input
+              id="gpu-radio"
+              v-model="partition"
+              class="is-checkradio"
+              type="radio"
+              value="GPU"
+            />
+            <label for="gpu-radio">GPU</label>
+          </div>
+        </div>
+      </b-collapse>
 
-    <div class="field">
-      <label class="label">Job Alert Email</label>
-      <div class="control has-icons-left has-icons-right">
-        <input
-          class="input is-danger"
-          type="email"
-          placeholder="Email input"
-          value="hello@hello.com"
-        />
-        <span class="icon is-small is-left">
-          <i class="fas fa-envelope"></i>
-        </span>
-        <span class="icon is-small is-right">
-          <i class="fas fa-exclamation-triangle"></i>
-        </span>
-      </div>
-      <p class="help is-danger">This email is invalid</p>
-    </div>
+      <b-collapse
+        class="card"
+        animation="slide"
+        :key="1"
+        :open="isOpen == 1"
+        @open="isOpen = 1"
+      >
+        <div
+          slot="trigger"
+          slot-scope="props"
+          class="card-header"
+          role="button"
+        >
+          <p class="card-header-title">
+            SBATCH Resources: Nodes, cores and memory
+          </p>
+          <a class="card-header-icon">
+            <b-icon :icon="props.open ? 'menu-down' : 'menu-up'"> </b-icon>
+          </a>
+        </div>
+        <div class="card-content">
+          <div class="content">
+            <b-field grouped label="Wall-time for your job (HH:MM:SS)">
+              <b-numberinput
+                v-model="hours"
+                :min="1"
+                :max="100"
+              ></b-numberinput>
+              <b-numberinput
+                v-model="minutes"
+                :min="1"
+                :max="60"
+              ></b-numberinput>
+              <b-numberinput
+                v-model="seconds"
+                :min="1"
+                :max="60"
+              ></b-numberinput>
+            </b-field>
+            <b-field label="Number of nodes">
+              <b-numberinput
+                v-model="nnodes"
+                :min="1"
+                :max="10"
+              ></b-numberinput>
+            </b-field>
+            <b-field label="Number of cores per node">
+              <b-numberinput
+                v-model="ncpus"
+                :min="1"
+                :max="100"
+              ></b-numberinput>
+            </b-field>
+            <b-field label="RAM per node (GB)">
+              <b-numberinput
+                v-model="memory"
+                :min="0"
+                :max="1000"
+              ></b-numberinput>
+            </b-field>
+          </div>
+        </div>
+      </b-collapse>
 
-    <div class="field">
-      <label class="label">Email Event (Optional)</label>
-      <div class="buttons">
-        <button class="button is-primary is-light">BEGIN</button>
-        <button class="button is-primary is-light">END</button>
-        <button class="button is-primary is-light">FAIL</button>
-        <button class="button is-primary is-light">REQUE</button>
-        <button class="button is-primary is-light">END</button>
-      </div>
-    </div>
-    <div class="field">
-      <label class="label">Number of nodes</label>
-      <div class="control">
-        <input
-          class="input"
-          type="text"
-          placeholder="Number of nodes"
-          value="xnat-tools"
-        />
-      </div>
-    </div>
-    <div class="field">
-      <label class="label">Processes per node</label>
-      <div class="control">
-        <input
-          class="input"
-          type="text"
-          placeholder="Processes per node"
-          value="xnat-tools"
-        />
-      </div>
-    </div>
-    <div class="field">
-      <label class="label">RAM per node (default: MB)</label>
-      <div class="control">
-        <input
-          class="input"
-          type="text"
-          placeholder="RAM per node (default: MB)"
-          value="xnat-tools"
-        />
-      </div>
-    </div>
+      <b-collapse
+        class="card"
+        animation="slide"
+        :key="2"
+        :open="isOpen == 2"
+        @open="isOpen = 2"
+      >
+        <div
+          slot="trigger"
+          slot-scope="props"
+          class="card-header"
+          role="button"
+        >
+          <p class="card-header-title">
+            SBATCH Logs and Notifications
+            <a class="card-header-icon">
+              <b-icon :icon="props.open ? 'menu-down' : 'menu-up'"> </b-icon>
+            </a>
+          </p>
+        </div>
+
+        <div class="card-content">
+          <div class="content">
+            <b-field label="Output Log">
+              <b-input v-model="output"></b-input>
+            </b-field>
+            <b-field label="Email Event">
+              <b-checkbox-button
+                v-model="emailevents"
+                native-value="BEGIN"
+                type="is-success"
+                :disabled="allEmailEvents == 1"
+              >
+                BEGIN
+              </b-checkbox-button>
+              <b-checkbox-button
+                v-model="emailevents"
+                native-value="END"
+                :disabled="allEmailEvents == 1"
+              >
+                END
+              </b-checkbox-button>
+              <b-checkbox-button
+                v-model="emailevents"
+                type="is-success"
+                native-value="REQUE"
+                :disabled="allEmailEvents == 1"
+              >
+                REQUE
+              </b-checkbox-button>
+              <b-checkbox-button
+                v-model="emailevents"
+                native-value="FAIL"
+                :disabled="allEmailEvents == 1"
+              >
+                FAIL
+              </b-checkbox-button>
+              <b-checkbox-button v-model="allEmailEvents" native-value="1">
+                ALL
+              </b-checkbox-button>
+            </b-field>
+            <b-field>
+              <b-input
+                placeholder="Email"
+                v-model="email"
+                type="email"
+                icon="email"
+              >
+              </b-input>
+            </b-field>
+          </div>
+        </div>
+      </b-collapse>
+    </section>
   </div>
 </template>
 
@@ -101,8 +199,49 @@
 import { mapFields } from 'vuex-map-fields'
 
 export default {
+  data() {
+    return {
+      allEmailEvents: 0,
+      isOpen: 0,
+    }
+  },
+  watch: {
+    allEmailEvents() {
+      if (this.allEmailEvents) {
+        this.$store.commit('updateField', {
+          path: 'emailevents',
+          value: ['ALL'],
+        })
+      } else {
+        this.$store.commit('updateField', {
+          path: 'emailevents',
+          value: [],
+        })
+      }
+    },
+  },
   computed: {
-    ...mapFields(['jobname', 'partition']),
+    ...mapFields([
+      'jobname',
+      'partition',
+      'nnodes',
+      'ncpus',
+      'memory',
+      'time.hours',
+      'time.minutes',
+      'time.seconds',
+      'output',
+      'email',
+      'emailevents',
+    ]),
+  },
+  methods: {
+    searchIconClick() {
+      alert('You wanna make a search?')
+    },
+    clearIconClick() {
+      this.email = ''
+    },
   },
 }
 </script>

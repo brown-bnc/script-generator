@@ -7,10 +7,10 @@
     <fragment v-if="nnodes">#SBATCH --nodes {{ nnodes }} </fragment>
     <fragment v-if="ncpus">#SBATCH --cpus-per-task {{ ncpus }} </fragment>
     <fragment v-if="memory">#SBATCH --mem {{ memory }} </fragment>
-    <fragment v-if="time">#SBATCH --time {{ time }} </fragment>
+    <fragment v-if="time">#SBATCH --time {{ timeString }} </fragment>
     <fragment v-if="output">#SBATCH --output {{ output }} </fragment>
+    <fragment v-if="emailevents.length>0">#SBATCH --mail-type {{ emailEventString }} </fragment>
     <fragment v-if="email">#SBATCH --mail-user {{ email }} </fragment>
-    <fragment v-if="emailevent">#SBATCH --mail-type {{ emailevent }} </fragment>
   </pre>
   </prism>
 </template>
@@ -38,7 +38,7 @@ export default {
       'time',
       'output',
       'email',
-      'emailevent',
+      'emailevents',
     ]),
     batchKey() {
       return (
@@ -47,11 +47,28 @@ export default {
         this.nnodes +
         this.ncpus +
         this.memory +
-        this.time +
+        this.timeString +
         this.output +
         this.email +
-        this.emailevent
+        this.emailevents
       )
+    },
+    timeString() {
+      return (
+        String(this.time.hours) +
+        ':' +
+        String(this.time.minutes).padStart(2, '0') +
+        ':' +
+        String(this.time.seconds).padStart(2, '0')
+      )
+    },
+    emailEventString() {
+      console.log(this.emailevents)
+      if (this.emailevents.includes('ALL')) {
+        return 'ALL'
+      } else {
+        return this.emailevents.join(', ')
+      }
     },
   },
   watch: {
