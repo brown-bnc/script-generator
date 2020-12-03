@@ -1,5 +1,5 @@
 <template>
-  <prism :key="sbatchCodeKey" lang="bash">
+  <prism :key="sbatchCodeKey" lang="bash" class="custom-pad">
     <pre>
     #!/bin/bash
     <fragment v-if="jobname">#SBATCH --job-name {{ jobname }} </fragment>
@@ -83,3 +83,11 @@ export default {
   },
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.custom-pad {
+  padding: 0;
+  margin: 0 auto;
+}
+</style>

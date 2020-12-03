@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="columns">
-      <div class="column">
+      <div class="column column-left">
         <b-collapse
           aria-id="contentIdForA11y2"
           class="panel"
@@ -19,7 +19,7 @@
           <Basejobform />
         </b-collapse>
       </div>
-      <div class="column"><Sbatchscript /></div>
+      <div class="column column-right"><Sbatchscript /></div>
     </div>
   </div>
 </template>
@@ -36,3 +36,13 @@ export default {
   },
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.column-left {
+  padding-right: 0;
+}
+.column-right {
+  padding-left: 0;
+}
+</style>

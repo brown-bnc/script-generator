@@ -44,6 +44,13 @@ Vue.component('prism', {
   mounted() {
     Prism.highlightAll()
   },
+  computed: {
+    noMarginStyle() {
+      return {
+        margin: 0,
+      }
+    },
+  },
   template:
-    '<div class="prism"><pre class="line-numbers" :class="`language-${lang}`"><code><slot></slot></code></pre></div>',
+    '<div class="prism"><pre class="line-numbers" :class="`language-${lang}`" :style="noMarginStyle"><code><slot></slot></code></pre></div>',
 })
