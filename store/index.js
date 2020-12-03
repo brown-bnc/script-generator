@@ -11,6 +11,7 @@ export const state = () => ({
   email: null,
   emailevents: [],
   output: '/gpfs/scratch/%u/test-%j.out',
+  //   active_nav: 'overview',
 })
 
 export const mutations = {
