@@ -23,33 +23,21 @@
         </div>
         <div class="card-content">
           <div class="content">
-            <label class="label">Job Name</label>
-            <div class="control">
-              <input
-                class="input"
-                v-model="jobname"
-                type="text"
-                placeholder="Name of this job"
-              />
-            </div>
-
-            <label class="label">Partition (Default: Batch)</label>
-            <input
-              id="batch-radio"
-              v-model="partition"
-              class="is-checkradio"
-              type="radio"
-              value="BATCH"
-            />
-            <label for="batch-radio">BATCH</label>
-            <input
-              id="gpu-radio"
-              v-model="partition"
-              class="is-checkradio"
-              type="radio"
-              value="GPU"
-            />
-            <label for="gpu-radio">GPU</label>
+            <b-field label="Job name">
+              <b-input v-model="jobname"></b-input>
+            </b-field>
+            <b-field label="Partition">
+              <b-radio-button
+                v-model="partition"
+                native-value="BATCH"
+                type="is-success"
+              >
+                <span>BATCH</span>
+              </b-radio-button>
+              <b-radio-button v-model="partition" native-value="GPU">
+                <span>GPU</span>
+              </b-radio-button>
+            </b-field>
           </div>
         </div>
       </b-collapse>
