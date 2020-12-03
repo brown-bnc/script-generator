@@ -1,7 +1,5 @@
 <template>
   <div>
-    <Navbar />
-    <Hero />
     <div class="columns">
       <div class="column">
         <b-collapse
@@ -28,15 +26,11 @@
 
 <script>
 import Basejobform from '~/components/Basejobform.vue'
-import Navbar from '~/components/Navbar.vue'
-import Hero from '~/components/Hero.vue'
 
 import Sbatchscript from '~/components/Sbatchscript.vue'
 
 export default {
   components: {
-    Navbar,
-    Hero,
     Basejobform,
     Sbatchscript,
   },

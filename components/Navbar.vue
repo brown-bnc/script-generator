@@ -19,7 +19,7 @@
       </template>
       <template v-slot:start>
         <li tabindex="0" class="navbar-item page-name">
-          <h2>OSCAR'S SBATCH SCRIPT GENERATOR</h2>
+          <h2>Behavioral Neuroimaging Core</h2>
         </li>
       </template>
     </DNavbar>

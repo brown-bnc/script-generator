@@ -12,10 +12,8 @@
         <div class="container">
           <div class="columns is-vcentered">
             <div class="column">
-              <p class="title">BNC Script Generator</p>
-              <p class="subtitle">
-                Generating Scripts for the Neuroimaging pipelines/processes.
-              </p>
+              <p class="title">Neuroimaging Script Generator</p>
+              <p class="subtitle">Generating Scripts for Oscar and more.</p>
             </div>
           </div>
         </div>
@@ -28,7 +26,7 @@
                 :class="{ 'is-active': active_nav == 'overview' }"
                 @click="activate('overview')"
               >
-                <a> {{ this.active_nav }} </a>
+                <a> Overview </a>
               </li>
               <li
                 :class="{ 'is-active': active_nav == 'xnat2bids' }"
