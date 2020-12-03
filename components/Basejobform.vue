@@ -14,9 +14,7 @@
           class="card-header"
           role="button"
         >
-          <p class="card-header-title">
-            SBATCH General: Jobname, Queue and Condo
-          </p>
+          <p class="card-header-title">General: Jobname, Queue and Condo</p>
           <a class="card-header-icon">
             <b-icon :icon="props.open ? 'menu-down' : 'menu-up'"> </b-icon>
           </a>

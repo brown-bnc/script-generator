@@ -1,8 +1,27 @@
 <template>
   <div>
     <Navbar />
-    <Basejobform />
-    <Sbatchscript />
+    <div class="columns">
+      <div class="column">
+        <b-collapse
+          aria-id="contentIdForA11y2"
+          class="panel"
+          animation="slide"
+          v-model="isOpen"
+        >
+          <div
+            slot="trigger"
+            class="panel-heading"
+            role="button"
+            aria-controls="contentIdForA11y2"
+          >
+            <strong>SBATCH Configuration</strong>
+          </div>
+          <Basejobform />
+        </b-collapse>
+      </div>
+      <div class="column"><Sbatchscript /></div>
+    </div>
   </div>
 </template>
 
