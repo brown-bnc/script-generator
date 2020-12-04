@@ -1,18 +1,30 @@
 <template>
-  <prism :key="sbatchCodeKey" lang="bash" class="custom-pad">
-    <pre>
-    #!/bin/bash
-    <fragment v-if="jobname">#SBATCH --job-name {{ jobname }} </fragment>
-    <fragment v-if="partition">#SBATCH --partition {{ partition }}</fragment>
-    <fragment v-if="nnodes">#SBATCH --nodes {{ nnodes }} </fragment>
-    <fragment v-if="ncpus">#SBATCH --cpus-per-task {{ ncpus }} </fragment>
-    <fragment v-if="memory">#SBATCH --mem {{ memory }} </fragment>
-    <fragment v-if="time">#SBATCH --time {{ timeString }} </fragment>
-    <fragment v-if="output">#SBATCH --output {{ output }} </fragment>
-    <fragment v-if="emailevents.length>0">#SBATCH --mail-type {{ emailEventString }} </fragment>
-    <fragment v-if="email">#SBATCH --mail-user {{ email }} </fragment>
-  </pre>
-  </prism>
+  <div>
+    <div
+      slot="trigger"
+      class="panel-heading"
+      role="button"
+      aria-controls="contentIdForA11y2"
+    >
+      <strong>Oscar Sbatch Script</strong>
+    </div>
+    <div class="panel-block custom-pad">
+      <prism :key="sbatchCodeKey" lang="bash" class="custom-pad">
+        <pre>
+            #!/bin/bash
+            <fragment v-if="jobname">#SBATCH --job-name {{ jobname }} </fragment>
+            <fragment v-if="partition">#SBATCH --partition {{ partition }}</fragment>
+            <fragment v-if="nnodes">#SBATCH --nodes {{ nnodes }} </fragment>
+            <fragment v-if="ncpus">#SBATCH --cpus-per-task {{ ncpus }} </fragment>
+            <fragment v-if="memory">#SBATCH --mem {{ memory }} </fragment>
+            <fragment v-if="time">#SBATCH --time {{ timeString }} </fragment>
+            <fragment v-if="output">#SBATCH --output {{ output }} </fragment>
+            <fragment v-if="emailevents.length>0">#SBATCH --mail-type {{ emailEventString }} </fragment>
+            <fragment v-if="email">#SBATCH --mail-user {{ email }} </fragment>
+        </pre>
+      </prism>
+    </div>
+  </div>
 </template>
 
 <script>

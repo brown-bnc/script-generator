@@ -2,8 +2,15 @@
   <div>
     <Navbar />
     <Hero />
-    <Overview v-if="this.active_nav == 'overview'" />
-    <Xnat2bids v-if="this.active_nav == 'xnat2bids'" />
+    <div v-if="this.active_nav == 'overview'" class="container">
+      <Overview />
+    </div>
+    <div v-if="this.active_nav == 'xnat2bids'" class="container">
+      <Xnat2bids />
+    </div>
+    <div class="extrapad has-text-centered">
+      <p>Made with love by <a href="ccv.brown.edu"> CCV </a></p>
+    </div>
   </div>
 </template>
 
@@ -12,7 +19,8 @@ import Navbar from '~/components/Navbar.vue'
 import Hero from '~/components/Hero.vue'
 import Overview from '~/components/Overview.vue'
 import Xnat2bids from '~/components/Xnat2bids.vue'
-
+import 'vue-made-with-love'
+import 'vue-made-with-love/dist/vue-made-with-love.css'
 export default {
   components: {
     Navbar,
@@ -27,3 +35,10 @@ export default {
   },
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.extrapad {
+  padding-top: 50px;
+}
+</style>

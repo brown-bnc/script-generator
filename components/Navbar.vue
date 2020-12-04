@@ -1,6 +1,6 @@
 <template>
   <div>
-    <DNavbar variant="light">
+    <DNavbar variant="white">
       <template v-slot:brand>
         <a
           class="navbar-item navbar-header-end"

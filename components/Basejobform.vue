@@ -28,7 +28,7 @@
               <b-radio-button
                 v-model="partition"
                 native-value="BATCH"
-                type="is-success"
+                type="is-link"
               >
                 <span>BATCH</span>
               </b-radio-button>
@@ -53,9 +53,7 @@
           class="card-header"
           role="button"
         >
-          <p class="card-header-title">
-            SBATCH Resources: Nodes, cores and memory
-          </p>
+          <p class="card-header-title">Resources: Nodes, cores and memory</p>
           <a class="card-header-icon">
             <b-icon :icon="props.open ? 'menu-down' : 'menu-up'"> </b-icon>
           </a>
@@ -117,12 +115,11 @@
           class="card-header"
           role="button"
         >
-          <p class="card-header-title">
-            SBATCH Logs and Notifications
-            <a class="card-header-icon">
-              <b-icon :icon="props.open ? 'menu-down' : 'menu-up'"> </b-icon>
-            </a>
-          </p>
+          <p class="card-header-title">Logs and Notifications</p>
+
+          <a class="card-header-icon">
+            <b-icon :icon="props.open ? 'menu-down' : 'menu-up'"> </b-icon>
+          </a>
         </div>
 
         <div class="card-content">
@@ -134,7 +131,7 @@
               <b-checkbox-button
                 v-model="emailevents"
                 native-value="BEGIN"
-                type="is-success"
+                type="is-link"
                 :disabled="allEmailEvents == 1"
               >
                 BEGIN
@@ -148,7 +145,7 @@
               </b-checkbox-button>
               <b-checkbox-button
                 v-model="emailevents"
-                type="is-success"
+                type="is-link"
                 native-value="REQUE"
                 :disabled="allEmailEvents == 1"
               >
@@ -231,3 +228,10 @@ export default {
   },
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.card-header {
+  background-color: rgba(89, 203, 232, 0.3);
+}
+</style>
