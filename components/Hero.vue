@@ -23,19 +23,26 @@
           <nav class="tabs is-boxed">
             <ul>
               <li
-                :class="{ 'is-active': active_nav == 'overview' }"
+                :class="{
+                  'is-active has-text-link-dark': active_nav == 'overview',
+                }"
                 @click="activate('overview')"
               >
                 <a> Overview </a>
               </li>
               <li
-                :class="{ 'is-active': active_nav == 'xnat2bids' }"
+                :class="{
+                  'is-active has-text-link-dark': active_nav == 'xnat2bids',
+                }"
                 @click="activate('xnat2bids')"
               >
                 <a> xnat2bids </a>
               </li>
               <li
-                :class="{ 'is-active': active_nav == 'bids-validator' }"
+                :class="{
+                  'is-active has-text-link-dark':
+                    active_nav == 'bids-validator',
+                }"
                 @click="activate('bids-validator')"
               >
                 <a> bids-validator </a>

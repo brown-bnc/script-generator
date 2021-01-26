@@ -21,6 +21,7 @@
             <fragment v-if="output">#SBATCH --output {{ output }} </fragment>
             <fragment v-if="emailevents.length>0">#SBATCH --mail-type {{ emailEventString }} </fragment>
             <fragment v-if="email">#SBATCH --mail-user {{ email }} </fragment>
+            <Xnat2bidscode/>
         </pre>
       </prism>
     </div>
@@ -30,10 +31,12 @@
 <script>
 import { mapState } from 'vuex'
 import { Fragment } from 'vue-fragment'
+import Xnat2bidscode from '~/components/Xnat2bidscode.vue'
 
 export default {
   components: {
     Fragment,
+    Xnat2bidscode,
   },
   data() {
     return {

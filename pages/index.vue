@@ -8,8 +8,10 @@
     <div v-if="this.active_nav == 'xnat2bids'" class="container">
       <Xnat2bids />
     </div>
-    <div class="extrapad has-text-centered">
-      <p>Made with love by <a href="ccv.brown.edu"> CCV </a></p>
+    <div>
+      <footer class="extrapad footer">
+        <made-with-love by="CCV" link="ccv.brown.edu" />
+      </footer>
     </div>
   </div>
 </template>
@@ -39,6 +41,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .extrapad {
-  padding-top: 50px;
+  position: relative;
+  margin-top: 50px;
+  padding-top: 0;
+  padding-bottom: 30px;
+  background-color: rgba(89, 203, 232, 0);
 }
 </style>

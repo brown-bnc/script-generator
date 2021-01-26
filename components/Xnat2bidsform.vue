@@ -22,10 +22,10 @@
         <div class="card-content">
           <div class="content">
             <b-field label="Version of xnat-tools">
-              <b-input v-model="jobname"></b-input>
+              <b-input v-model="version"></b-input>
             </b-field>
             <b-field label="Output Path">
-              <b-input v-model="jobname"></b-input>
+              <b-input v-model="output_path"></b-input>
             </b-field>
           </div>
         </div>
@@ -52,20 +52,23 @@
         <div class="card-content">
           <div class="content">
             <b-field label="Include series">
-              <b-input v-model="jobname"></b-input>
+              <b-input v-model="i_series"></b-input>
             </b-field>
             <b-field label="Skip series">
-              <b-input v-model="jobname"></b-input>
+              <b-input v-model="s_series"></b-input>
             </b-field>
             <b-field>
               <b-switch v-model="needs_bidsmap">Needs bidsmap file</b-switch>
             </b-field>
             <b-field>
-              <b-input v-if="needs_bidsmap" v-model="jobname"></b-input>
+              <b-input v-if="needs_bidsmap" v-model="bidsmap_file"></b-input>
             </b-field>
             <b-field grouped label="Flags">
-              <b-switch type="is-info">Overwrite</b-switch>
-              <b-switch type="is-info">Very Verbose</b-switch>
+              <b-switch v-model="overwrite" type="is-info">Overwrite</b-switch>
+              <b-switch v-model="very_verbose" type="is-info"
+                >Very Verbose</b-switch
+              >
+              <b-switch v-model="cleanup" type="is-info">Clean Up</b-switch>
             </b-field>
           </div>
         </div>

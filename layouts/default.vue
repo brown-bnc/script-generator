@@ -65,5 +65,6 @@ html {
 .v-application {
   background-color: rgba(89, 203, 232, 0.1);
   min-height: 100vh;
+  margin-bottom: -50px;
 }
 </style>
