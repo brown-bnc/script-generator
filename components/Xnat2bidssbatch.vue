@@ -10,19 +10,8 @@
     </div>
     <div class="panel-block custom-pad">
       <prism :key="sbatchCodeKey" lang="bash" class="custom-pad">
-        <pre>
-            #!/bin/bash
-            <fragment v-if="jobname">#SBATCH --job-name {{ jobname }} </fragment>
-            <fragment v-if="partition">#SBATCH --partition {{ partition }}</fragment>
-            <fragment v-if="nnodes">#SBATCH --nodes {{ nnodes }} </fragment>
-            <fragment v-if="ncpus">#SBATCH --cpus-per-task {{ ncpus }} </fragment>
-            <fragment v-if="memory">#SBATCH --mem {{ memory }} </fragment>
-            <fragment v-if="time">#SBATCH --time {{ timeString }} </fragment>
-            <fragment v-if="output">#SBATCH --output {{ output }} </fragment>
-            <fragment v-if="emailevents.length>0">#SBATCH --mail-type {{ emailEventString }} </fragment>
-            <fragment v-if="email">#SBATCH --mail-user {{ email }} </fragment>
-            <Xnat2bidscode/>
-        </pre>
+        <Basejobfragment />
+        <Xnat2bidsfragment />
       </prism>
     </div>
   </div>
@@ -30,13 +19,13 @@
 
 <script>
 import { mapState } from 'vuex'
-import { Fragment } from 'vue-fragment'
-import Xnat2bidscode from '~/components/Xnat2bidscode.vue'
+import Basejobfragment from '~/components/Basejobfragment.vue'
+import Xnat2bidsfragment from '~/components/Xnat2bidsfragment.vue'
 
 export default {
   components: {
-    Fragment,
-    Xnat2bidscode,
+    Xnat2bidsfragment,
+    Basejobfragment,
   },
   data() {
     return {

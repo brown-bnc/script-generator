@@ -49,7 +49,7 @@
           <Xnat2bidsform />
         </b-collapse>
       </div>
-      <div class="column column-right"><Sbatchscript /></div>
+      <div class="column column-right"><Xnat2bidssbatch /></div>
     </div>
   </div>
 </template>
@@ -57,12 +57,12 @@
 <script>
 import Basejobform from '~/components/Basejobform.vue'
 import Xnat2bidsform from '~/components/Xnat2bidsform.vue'
-import Sbatchscript from '~/components/Sbatchscript.vue'
+import Xnat2bidssbatch from '~/components/Xnat2bidssbatch.vue'
 
 export default {
   components: {
     Basejobform,
-    Sbatchscript,
+    Xnat2bidssbatch,
     Xnat2bidsform,
   },
   data() {
