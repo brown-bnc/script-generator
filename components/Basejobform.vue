@@ -22,24 +22,23 @@
         <div class="card-content">
           <div class="content">
             <b-field label="Job name">
-              <b-input v-model="jobname"></b-input>
+              <b-input v-model="sbatch[0].jobname"></b-input>
             </b-field>
             <b-field label="Partition">
               <b-radio-button
-                v-model="partition"
+                v-model="sbatch[0].partition"
                 native-value="BATCH"
                 type="is-link"
               >
                 <span>BATCH</span>
               </b-radio-button>
-              <b-radio-button v-model="partition" native-value="GPU">
+              <b-radio-button v-model="sbatch[0].partition" native-value="GPU">
                 <span>GPU</span>
               </b-radio-button>
             </b-field>
           </div>
         </div>
       </b-collapse>
-
       <b-collapse
         class="card"
         animation="slide"
@@ -60,40 +59,40 @@
         </div>
         <div class="card-content">
           <div class="content">
-            <b-field grouped label="Wall-time for your job (HH:MM:SS)">
+            <!-- <b-field grouped label="Wall-time for your job (HH:MM:SS)">
               <b-numberinput
-                v-model="hours"
+                v-model="sbatch[0].hours"
                 :min="1"
                 :max="100"
               ></b-numberinput>
               <b-numberinput
-                v-model="minutes"
+                v-model="sbatch[0].minutes"
                 :min="1"
                 :max="60"
               ></b-numberinput>
               <b-numberinput
-                v-model="seconds"
+                v-model="sbatch[0].seconds"
                 :min="1"
                 :max="60"
               ></b-numberinput>
-            </b-field>
+            </b-field> -->
             <b-field label="Number of nodes">
               <b-numberinput
-                v-model="nnodes"
+                v-model="sbatch[0].nnodes"
                 :min="1"
                 :max="10"
               ></b-numberinput>
             </b-field>
             <b-field label="Number of cores per node">
               <b-numberinput
-                v-model="ncpus"
+                v-model="sbatch[0].ncpus"
                 :min="1"
                 :max="100"
               ></b-numberinput>
             </b-field>
             <b-field label="RAM per node (GB)">
               <b-numberinput
-                v-model="memory"
+                v-model="sbatch[0].memory"
                 :min="0"
                 :max="1000"
               ></b-numberinput>
@@ -101,7 +100,6 @@
           </div>
         </div>
       </b-collapse>
-
       <b-collapse
         class="card"
         animation="slide"
@@ -125,11 +123,11 @@
         <div class="card-content">
           <div class="content">
             <b-field label="Output Log">
-              <b-input v-model="output"></b-input>
+              <b-input v-model="sbatch[0].output"></b-input>
             </b-field>
             <b-field label="Email Event">
               <b-checkbox-button
-                v-model="emailevents"
+                v-model="sbatch[0].emailevents"
                 native-value="BEGIN"
                 type="is-link"
                 :disabled="allEmailEvents == 1"
@@ -137,14 +135,14 @@
                 BEGIN
               </b-checkbox-button>
               <b-checkbox-button
-                v-model="emailevents"
+                v-model="sbatch[0].emailevents"
                 native-value="END"
                 :disabled="allEmailEvents == 1"
               >
                 END
               </b-checkbox-button>
               <b-checkbox-button
-                v-model="emailevents"
+                v-model="sbatch[0].emailevents"
                 type="is-link"
                 native-value="REQUE"
                 :disabled="allEmailEvents == 1"
@@ -152,20 +150,23 @@
                 REQUE
               </b-checkbox-button>
               <b-checkbox-button
-                v-model="emailevents"
+                v-model="sbatch[0].emailevents"
                 native-value="FAIL"
                 :disabled="allEmailEvents == 1"
               >
                 FAIL
               </b-checkbox-button>
-              <b-checkbox-button v-model="allEmailEvents" native-value="1">
+              <b-checkbox-button
+                v-model="sbatch[0].allEmailEvents"
+                native-value="1"
+              >
                 ALL
               </b-checkbox-button>
             </b-field>
             <b-field>
               <b-input
                 placeholder="Email"
-                v-model="email"
+                v-model="sbatch[0].email"
                 type="email"
                 icon="email"
               >
@@ -179,7 +180,7 @@
 </template>
 
 <script>
-import { mapFields } from 'vuex-map-fields'
+import { mapMultiRowFields } from 'vuex-map-fields'
 
 export default {
   data() {
@@ -204,19 +205,7 @@ export default {
     },
   },
   computed: {
-    ...mapFields([
-      'jobname',
-      'partition',
-      'nnodes',
-      'ncpus',
-      'memory',
-      'time.hours',
-      'time.minutes',
-      'time.seconds',
-      'output',
-      'email',
-      'emailevents',
-    ]),
+    ...mapMultiRowFields(['sbatch']),
   },
   methods: {
     searchIconClick() {

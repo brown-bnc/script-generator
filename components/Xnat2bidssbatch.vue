@@ -33,46 +33,16 @@ export default {
     }
   },
   computed: {
-    ...mapState([
-      'jobname',
-      'partition',
-      'nnodes',
-      'ncpus',
-      'memory',
-      'time',
-      'output',
-      'email',
-      'emailevents',
-    ]),
+    ...mapState({
+      sbatch: 'sbatch',
+    }),
     batchKey() {
-      return (
-        this.jobname +
-        this.partition +
-        this.nnodes +
-        this.ncpus +
-        this.memory +
-        this.timeString +
-        this.output +
-        this.email +
-        this.emailevents
-      )
-    },
-    timeString() {
-      return (
-        String(this.time.hours) +
-        ':' +
-        String(this.time.minutes).padStart(2, '0') +
-        ':' +
-        String(this.time.seconds).padStart(2, '0')
-      )
-    },
-    emailEventString() {
-      console.log(this.emailevents)
-      if (this.emailevents.includes('ALL')) {
-        return 'ALL'
-      } else {
-        return this.emailevents.join(', ')
+      let finalString = ''
+
+      for (const key in this.sbatch[0]) {
+        finalString += this.sbatch[0][key]
       }
+      return finalString
     },
   },
   watch: {
@@ -83,6 +53,7 @@ export default {
   methods: {
     updateKey() {
       this.sbatchCodeKey = 'sbatch_code_' + Math.floor(Math.random() * 100 + 1)
+      console.log(this.sbatchCodeKey)
     },
   },
 }

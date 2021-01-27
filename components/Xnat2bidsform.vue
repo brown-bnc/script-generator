@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section>
+    <!-- <section>
       <b-collapse
         class="card"
         animation="slide"
@@ -73,12 +73,12 @@
           </div>
         </div>
       </b-collapse>
-    </section>
+    </section> -->
   </div>
 </template>
 
 <script>
-import { mapFields } from 'vuex-map-fields'
+// import { mapFields } from 'vuex-map-fields'
 
 export default {
   data() {
@@ -102,29 +102,29 @@ export default {
       }
     },
   },
-  computed: {
-    ...mapFields([
-      'jobname',
-      'partition',
-      'nnodes',
-      'ncpus',
-      'memory',
-      'time.hours',
-      'time.minutes',
-      'time.seconds',
-      'output',
-      'email',
-      'emailevents',
-    ]),
-  },
-  methods: {
-    searchIconClick() {
-      alert('You wanna make a search?')
-    },
-    clearIconClick() {
-      this.email = ''
-    },
-  },
+  //   computed: {
+  //     ...mapFields([
+  //       'jobname',
+  //       'partition',
+  //       'nnodes',
+  //       'ncpus',
+  //       'memory',
+  //       'time.hours',
+  //       'time.minutes',
+  //       'time.seconds',
+  //       'output',
+  //       'email',
+  //       'emailevents',
+  //     ]),
+  //   },
+  //   methods: {
+  //     searchIconClick() {
+  //       alert('You wanna make a search?')
+  //     },
+  //     clearIconClick() {
+  //       this.email = ''
+  //     },
+  //   },
 }
 </script>
 
