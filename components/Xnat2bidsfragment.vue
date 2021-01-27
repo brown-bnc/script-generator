@@ -68,12 +68,12 @@ export default {
       'xnat2bids.version',
       'xnat2bids.output_path',
       'xnat2bids.needs_bidsmap',
-      'xnat2bids.bidsmap_directory',
+      'xnat2bids.bidsmap_dir',
       'xnat2bids.bidsmap_file',
       'xnat2bids.overwrite',
       'xnat2bids.cleanup',
     ]),
-    ...mapMultiRowFields(['xnat2bids.session']),
+    ...mapMultiRowFields(['xnat2bids.sessions']),
   },
 }
 </script>
