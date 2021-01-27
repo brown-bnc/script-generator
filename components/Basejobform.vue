@@ -59,7 +59,7 @@
         </div>
         <div class="card-content">
           <div class="content">
-            <!-- <b-field grouped label="Wall-time for your job (HH:MM:SS)">
+            <b-field grouped label="Wall-time for your job (HH:MM:SS)">
               <b-numberinput
                 v-model="sbatch[0].hours"
                 :min="1"
@@ -75,7 +75,7 @@
                 :min="1"
                 :max="60"
               ></b-numberinput>
-            </b-field> -->
+            </b-field>
             <b-field label="Number of nodes">
               <b-numberinput
                 v-model="sbatch[0].nnodes"
@@ -156,10 +156,7 @@
               >
                 FAIL
               </b-checkbox-button>
-              <b-checkbox-button
-                v-model="sbatch[0].allEmailEvents"
-                native-value="1"
-              >
+              <b-checkbox-button v-model="allEmailEvents" native-value="1">
                 ALL
               </b-checkbox-button>
             </b-field>
@@ -193,12 +190,12 @@ export default {
     allEmailEvents() {
       if (this.allEmailEvents) {
         this.$store.commit('updateField', {
-          path: 'emailevents',
+          path: 'sbatch[0].emailevents',
           value: ['ALL'],
         })
       } else {
         this.$store.commit('updateField', {
-          path: 'emailevents',
+          path: 'sbatch[0].emailevents',
           value: [],
         })
       }

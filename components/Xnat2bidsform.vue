@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <section>
+    <section>
       <b-collapse
         class="card"
         animation="slide"
@@ -73,50 +73,31 @@
           </div>
         </div>
       </b-collapse>
-    </section> -->
+    </section>
   </div>
 </template>
 
 <script>
-// import { mapFields } from 'vuex-map-fields'
+import { mapFields } from 'vuex-map-fields'
 
 export default {
   data() {
     return {
-      allEmailEvents: 0,
       isOpen: 0,
     }
   },
-  watch: {
-    allEmailEvents() {
-      if (this.allEmailEvents) {
-        this.$store.commit('updateField', {
-          path: 'emailevents',
-          value: ['ALL'],
-        })
-      } else {
-        this.$store.commit('updateField', {
-          path: 'emailevents',
-          value: [],
-        })
-      }
-    },
+  computed: {
+    ...mapFields([
+      'xnat2bids.version',
+      'xnat2bids.output_path',
+      'xnat2bids.needs_bidsmap',
+      'xnat2bids.bidsmap_file',
+      'xnat2bids.i_series',
+      'xnat2bids.s_series',
+      'xnat2bids.overwrite',
+      'xnat2bids.cleanup',
+    ]),
   },
-  //   computed: {
-  //     ...mapFields([
-  //       'jobname',
-  //       'partition',
-  //       'nnodes',
-  //       'ncpus',
-  //       'memory',
-  //       'time.hours',
-  //       'time.minutes',
-  //       'time.seconds',
-  //       'output',
-  //       'email',
-  //       'emailevents',
-  //     ]),
-  //   },
   //   methods: {
   //     searchIconClick() {
   //       alert('You wanna make a search?')

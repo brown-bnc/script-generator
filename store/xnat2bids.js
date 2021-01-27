@@ -4,9 +4,16 @@ export const state = () => ({
   version: 'latest',
   output_path: null,
   needs_bidsmap: false,
-  bidsmap_file: null,
-  i_series: null,
-  s_series: null,
+  bidsmap_directory: '/gpfs/data/bnc/sanes_sadlum/preprocessing/xnat2bids',
+  bidsmap_file: 'bidsmap.json',
+  session: [
+    {
+      participant_id: 135,
+      xnat_id: 'XNAT3_E00013',
+      i_series: [],
+      s_series: [7, 15, 16, 17, 18],
+    },
+  ],
   overwrite: false,
   cleanup: false,
 })
