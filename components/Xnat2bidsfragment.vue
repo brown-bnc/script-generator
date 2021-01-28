@@ -134,6 +134,28 @@ export default {
       const dictLine = lines.join(' \\\n')
       return dictLine + ')'
     },
+
+    singularityString() {
+      const lines = ['singularity exec']
+      if (this.needs_bidsmap) {
+        lines.push("""  -B ${output_dir} -B ${bidsmap_dir}:/bidsmaps:ro ${simg}""")
+      } else {
+        lines.push('  -B ${output_dir} ${simg}')
+      }
+      lines.push('  xnat2bids ${XNAT_SESSION} ${output_dir}')
+      lines.push('  -u ${XNAT_USER}}')
+      lines.push('  -p ${XNAT_PASSWORD}')
+      if (this.ovewrite) {
+        lines.push('  --overwrite')
+      }
+      if (this.needs_bidsmap) {
+        lines.push('-f /bidsmaps/${bidsmap_file}')
+      }
+      if (seriesDictString !== '') {
+        lines.push('  ${INCLUDE_SKIP_STRING}')
+      }
+      return lines.join(' \\\n')
+    },
   },
 }
 </script>
