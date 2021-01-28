@@ -13,7 +13,7 @@
     # Version of xnat2bids being used
     version={{ version }}
     # Path to Singularity Image for xnat-tools (maintained by bnc)
-    simg=/gpfs/data/bnc/simgs/brownbnc/xnat-tools-{{ version }}.sif
+    simg=/gpfs/data/bnc/simgs/brownbnc/xnat-tools-${version}.sif
     
     #--------- directories ---------
 
@@ -25,9 +25,6 @@
     # The bidsmap file for your study lives under ${bidsmap_dir}/${bidsmap_file}
     bidsmap_dir={{ bidsmapdirectory }}
     bidsmap_file={ bidsmapfile }
-    tmp_dir=/gpfs/scratch/$USER/xnat2bids
-
-    mkdir -m 775 ${tmp_dir} || echo "Temp directory already exists"
     </fragment>
     <fragment>
     #----------- Dictionaries for subject specific variables -----
@@ -61,17 +58,7 @@
     # The -i passes a series to download, 
     # without any -i all sequences will be processed
     # The -s passes a series to skip, 
-    singularity exec \
-        -B ${output_dir} -B ${bidsmap_dir}:/bidsmaps:ro ${simg} \
-        xnat2bids ${XNAT_SESSION} ${output_dir} \
-        -u ${XNAT_USER} \
-        -p "${XNAT_PASSWORD}" \</fragment>
-    <fragment v-if="overwrite">    --overwrite \</fragment>
-    <fragment v-if="needs_bidsmap">
-        -f /bidsmaps/${bidsmap_file} \
-    </fragment>
-    <fragment>
-        ${INCLUDE_SKIP_STRING}
+    {{ singularityString }}
     </fragment>
 
 
@@ -138,21 +125,23 @@ export default {
     singularityString() {
       const lines = ['singularity exec']
       if (this.needs_bidsmap) {
-        lines.push("""  -B ${output_dir} -B ${bidsmap_dir}:/bidsmaps:ro ${simg}""")
+        lines.push(
+          `  -B \${output_dir} -B \${bidsmap_dir}:/bidsmaps:ro \${simg}`
+        )
       } else {
-        lines.push('  -B ${output_dir} ${simg}')
+        lines.push(`  -B \${output_dir} \${simg}`)
       }
-      lines.push('  xnat2bids ${XNAT_SESSION} ${output_dir}')
-      lines.push('  -u ${XNAT_USER}}')
-      lines.push('  -p ${XNAT_PASSWORD}')
+      lines.push(`  xnat2bids \${XNAT_SESSION} \${output_dir}`)
+      lines.push(`  -u \${XNAT_USER}}`)
+      lines.push(`  -p \${XNAT_PASSWORD}`)
       if (this.ovewrite) {
-        lines.push('  --overwrite')
+        lines.push(`  --overwrite`)
       }
       if (this.needs_bidsmap) {
-        lines.push('-f /bidsmaps/${bidsmap_file}')
+        lines.push(`-f /bidsmaps/\${bidsmap_file}`)
       }
-      if (seriesDictString !== '') {
-        lines.push('  ${INCLUDE_SKIP_STRING}')
+      if (this.seriesDictString !== '') {
+        lines.push(`  \${INCLUDE_SKIP_STRING}`)
       }
       return lines.join(' \\\n')
     },
