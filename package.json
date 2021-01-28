@@ -34,6 +34,7 @@
     "nuxt": "^2.14.6",
     "nuxt-buefy": "^0.4.4",
     "nuxt-highlightjs": "^1.0.1",
+    "prism-themes": "^1.5.0",
     "prismjs": "^1.22.0",
     "vue-code-highlight": "^0.7.6",
     "vue-fragment": "^1.5.1",

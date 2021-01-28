@@ -32,21 +32,43 @@
     <fragment>
     #----------- Dictionaries for subject specific variables -----
     # Dictionary of sessions to subject
-    declare -A sessions=([137]="XNAT3_E00035" \
-                        [135]="XNAT3_E00013")
+    {{ sessionDictString }}
 
-    # Dictionary of series to skip per subject
-    declare -A skip_map=([137]="-s 6 -s 15 -s 16 -s 17 -s 18" \
-                        [135]="-s 6 -s 8 -s 15 -s 16 -s 17 -s 18")
-
+    # Dictionary of series to skip/include per subject
+    {{ seriesDictString }}
+    
     # Use the task array ID to get the right value for this job
     XNAT_SESSION=${sessions[${SLURM_ARRAY_TASK_ID}]}
-    SKIP_STRING=${skip_map[${SLURM_ARRAY_TASK_ID}]}
+    INCLUDE_SKIP_STRING=${series_map[${SLURM_ARRAY_TASK_ID}]}
 
     echo "Processing session:"
     echo ${XNAT_SESSION}
     echo "Series to skip:"
-    echo ${SKIP_STRING}
+    echo ${INCLUDE_SKIP_STRING}
+
+    #--------- Run xnat2bids ---------
+    # Runs singularity command to extract DICOMs 
+    # from xnat and export to BIDS.
+    # This command tells singularity to launch
+    # xnat-tools-${version}.sif image
+    # and execute the xnat2bids command with the given inputs.
+    # The `-B` flag, binds a path. 
+    # i.e, makes that directory available to the singularity container
+    # The file system inside your container is not the same as in Oscar, 
+    # unless you bind the paths. 
+    # We are binding the ouput directory and the bidsmap directory
+    # Singularyty by default also binds your home and /tmp
+    # The -i passes a series to download, 
+    # without any -i all sequences will be processed
+    # The -s passes a series to skip, 
+    singularity exec \
+    -B ${output_dir} -B ${bidsmap_dir}:/bidsmaps:ro ${simg} \
+    xnat2bids ${XNAT_SESSION} ${output_dir} \
+    -u ${XNAT_USER} \
+    -p "${XNAT_PASSWORD}" \
+    --overwrite \
+    -f /bidsmaps/${bidsmap_file} \
+    ${INCLUDE_SKIP_STRING}
     </fragment>
 
 
@@ -73,7 +95,42 @@ export default {
       'xnat2bids.overwrite',
       'xnat2bids.cleanup',
     ]),
+
     ...mapMultiRowFields(['xnat2bids.sessions']),
+
+    sessionDictString() {
+      let key = this.sessions[0].participant_id
+      let val = this.sessions[0].xnat_id
+      const lines = [`declare -A sessions=([${key}]="${val}"`]
+      for (let i = 1; i < this.sessions.length; i++) {
+        key = this.sessions[i].participant_id
+        val = this.sessions[i].xnat_id
+        lines.push(`                       [${key}]="${val}"`)
+      }
+      const dictLine = lines.join(' \\\n')
+      return dictLine + ')'
+    },
+
+    seriesDictString() {
+      let key = this.sessions[0].participant_id
+      let sval = this.sessions[0].s_series.join(' -s ')
+      sval = sval.length > 0 ? '-s ' + sval : sval
+
+      let ival = this.sessions[0].i_series.join(' -i ')
+      ival = ival.length > 0 ? ' -i ' + ival : ival
+
+      const lines = [`declare -A series_map=([${key}]="${sval + ival}"`]
+      for (let i = 1; i < this.sessions.length; i++) {
+        key = this.sessions[i].participant_id
+        sval = this.sessions[i].s_series.join(' -s ')
+        sval = sval.length > 0 ? '-s ' + sval : sval
+        ival = this.sessions[i].i_series.join(' -i ')
+        ival = ival.length > 0 ? ' -i ' + ival : ival
+        lines.push(`                         [${key}]="${sval + ival}"`)
+      }
+      const dictLine = lines.join(' \\\n')
+      return dictLine + ')'
+    },
   },
 }
 </script>

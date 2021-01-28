@@ -9,7 +9,7 @@
       <strong>Oscar Sbatch Script</strong>
     </div>
     <div class="panel-block custom-pad">
-      <prism :key="sbatchCodeKey" lang="bash" class="custom-pad">
+      <prism :key="sbatchCodeKey" lang="bash">
         <Basejobfragment />
         <Xnat2bidsfragment />
       </prism>
@@ -35,13 +35,11 @@ export default {
   computed: {
     ...mapState({
       sbatch: 'sbatch',
+      xnat2bids: 'xnat2bids',
     }),
     batchKey() {
-      let finalString = ''
-
-      for (const key in this.sbatch[0]) {
-        finalString += this.sbatch[0][key]
-      }
+      let finalString = JSON.stringify(this.sbatch[0])
+      finalString += JSON.stringify(this.xnat2bids)
       return finalString
     },
   },
