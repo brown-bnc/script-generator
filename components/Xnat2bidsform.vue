@@ -88,11 +88,17 @@
                 >
                 </b-taginput>
               </b-field>
-              <!-- <div class="divider is-info">Info</div> -->
             </b-notification>
           </div>
           <b-button type="is-link" outlined @click="addSession"
             >Add Session</b-button
+          >
+          <b-button
+            type="is-link"
+            v-if="sessions.length > 1"
+            outlined
+            @click="removeSession"
+            >Remove Session</b-button
           >
         </div>
       </b-collapse>
@@ -131,9 +137,7 @@
             </b-field>
             <b-field grouped label="Flags">
               <b-switch v-model="overwrite" type="is-info">Overwrite</b-switch>
-              <b-switch v-model="very_verbose" type="is-info"
-                >Very Verbose</b-switch
-              >
+              <b-switch v-model="verbose" type="is-info">Very Verbose</b-switch>
               <b-switch v-model="cleanup" type="is-info">Clean Up</b-switch>
             </b-field>
           </div>
@@ -151,8 +155,6 @@ export default {
   data() {
     return {
       isOpen: 0,
-      skip_series: [[1]],
-      tags: ['Auckland', 'Wellington', 'Very long string that would overflow'],
     }
   },
   computed: {
@@ -166,11 +168,15 @@ export default {
       'xnat2bids.s_series',
       'xnat2bids.overwrite',
       'xnat2bids.cleanup',
+      'xnat2bids.verbose',
     ]),
     ...mapMultiRowFields(['xnat2bids.sessions']),
   },
   methods: {
-    ...mapMutations({ addSession: 'xnat2bids/addSession' }),
+    ...mapMutations({
+      addSession: 'xnat2bids/addSession',
+      removeSession: 'xnat2bids/popSession',
+    }),
   },
 }
 </script>

@@ -16,6 +16,7 @@ export const state = () => ({
   ],
   overwrite: false,
   cleanup: false,
+  verbose: false,
 })
 
 export const mutations = {
@@ -33,6 +34,10 @@ export const mutations = {
       i_series: [],
       s_series: [7, 15, 16, 17, 18],
     })
+  },
+  popSession(state) {
+    console.log('here')
+    state.sessions.pop()
   },
 }
 

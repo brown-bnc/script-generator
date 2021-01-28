@@ -21,11 +21,7 @@
     output_dir={{output_path}}
     mkdir -m 775 ${output_dir} || echo "Output directory already exists"
     </fragment>
-    <fragment v-if=needs_bidsmap>
-    # The bidsmap file for your study lives under ${bidsmap_dir}/${bidsmap_file}
-    bidsmap_dir={{ bidsmapdirectory }}
-    bidsmap_file={ bidsmapfile }
-    </fragment>
+
     <fragment>
     #----------- Dictionaries for subject specific variables -----
     # Dictionary of sessions to subject
@@ -58,6 +54,14 @@
     # The -i passes a series to download, 
     # without any -i all sequences will be processed
     # The -s passes a series to skip, 
+
+    <fragment v-if=needs_bidsmap>
+    # The bidsmap file
+    # It needs to live under ${bidsmap_dir}/${bidsmap_file}
+    bidsmap_dir={{ bidsmap_dir }}
+    bidsmap_file={{ bidsmap_file }}
+    </fragment>
+
     {{ singularityString }}
     </fragment>
 
@@ -84,6 +88,7 @@ export default {
       'xnat2bids.bidsmap_file',
       'xnat2bids.overwrite',
       'xnat2bids.cleanup',
+      'xnat2bids.verbose',
     ]),
 
     ...mapMultiRowFields(['xnat2bids.sessions']),
@@ -124,24 +129,28 @@ export default {
 
     singularityString() {
       const lines = ['singularity exec']
+      lines.push(`    -B \${output_dir}`)
       if (this.needs_bidsmap) {
-        lines.push(
-          `  -B \${output_dir} -B \${bidsmap_dir}:/bidsmaps:ro \${simg}`
-        )
-      } else {
-        lines.push(`  -B \${output_dir} \${simg}`)
+        lines.push(`    -B \${bidsmap_dir}:/bidsmaps:ro`)
       }
-      lines.push(`  xnat2bids \${XNAT_SESSION} \${output_dir}`)
-      lines.push(`  -u \${XNAT_USER}}`)
-      lines.push(`  -p \${XNAT_PASSWORD}`)
-      if (this.ovewrite) {
-        lines.push(`  --overwrite`)
-      }
+      lines.push(`    \${simg}`)
+      lines.push(`    xnat2bids \${XNAT_SESSION} \${output_dir}`)
+      lines.push(`    -u \${XNAT_USER}}`)
+      lines.push(`    -p \${XNAT_PASSWORD}`)
       if (this.needs_bidsmap) {
-        lines.push(`-f /bidsmaps/\${bidsmap_file}`)
+        lines.push(`    -f /bidsmaps/\${bidsmap_file}`)
+      }
+      if (this.overwrite) {
+        lines.push(`    --overwrite`)
+      }
+      if (this.verbose) {
+        lines.push(`    -v -v`)
+      }
+      if (this.cleanup) {
+        lines.push(`    --cleanup`)
       }
       if (this.seriesDictString !== '') {
-        lines.push(`  \${INCLUDE_SKIP_STRING}`)
+        lines.push(`    \${INCLUDE_SKIP_STRING}`)
       }
       return lines.join(' \\\n')
     },
