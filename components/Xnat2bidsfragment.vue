@@ -62,13 +62,16 @@
     # without any -i all sequences will be processed
     # The -s passes a series to skip, 
     singularity exec \
-    -B ${output_dir} -B ${bidsmap_dir}:/bidsmaps:ro ${simg} \
-    xnat2bids ${XNAT_SESSION} ${output_dir} \
-    -u ${XNAT_USER} \
-    -p "${XNAT_PASSWORD}" \
-    --overwrite \
-    -f /bidsmaps/${bidsmap_file} \
-    ${INCLUDE_SKIP_STRING}
+        -B ${output_dir} -B ${bidsmap_dir}:/bidsmaps:ro ${simg} \
+        xnat2bids ${XNAT_SESSION} ${output_dir} \
+        -u ${XNAT_USER} \
+        -p "${XNAT_PASSWORD}" \</fragment>
+    <fragment v-if="overwrite">    --overwrite \</fragment>
+    <fragment v-if="needs_bidsmap">
+        -f /bidsmaps/${bidsmap_file} \
+    </fragment>
+    <fragment>
+        ${INCLUDE_SKIP_STRING}
     </fragment>
 
 

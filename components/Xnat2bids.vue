@@ -7,8 +7,7 @@
           class="panel"
           animation="slide"
           :key="1"
-          :open="isOpen == 1"
-          @open="isOpen = 1"
+          :open="true"
         >
           <div
             slot="trigger"
@@ -17,11 +16,6 @@
             aria-controls="contentIdForA11y2"
           >
             <strong class="level-left">SBATCH Configuration</strong>
-            <b-icon
-              class="level-left"
-              :icon="isOpen == 1 ? 'menu-down' : 'menu-up'"
-            >
-            </b-icon>
           </div>
           <Basejobform />
         </b-collapse>
@@ -30,8 +24,7 @@
           class="panel"
           animation="slide"
           :key="2"
-          :open="isOpen == 2"
-          @open="isOpen = 2"
+          :open="true"
         >
           <div
             slot="trigger"
@@ -40,11 +33,6 @@
             aria-controls="contentIdForA11y2"
           >
             <strong class="level-left">XNAT2BIDS Configuration</strong>
-            <b-icon
-              class="level-left"
-              :icon="isOpen == 2 ? 'menu-down' : 'menu-up'"
-            >
-            </b-icon>
           </div>
           <Xnat2bidsform />
         </b-collapse>
@@ -64,13 +52,6 @@ export default {
     Basejobform,
     Xnat2bidssbatch,
     Xnat2bidsform,
-  },
-  data() {
-    return {
-      isOpen: 1,
-      isSbatchOpen: false,
-      isXnat2bidsOpen: false,
-    }
   },
 }
 </script>
