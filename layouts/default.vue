@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="v-application">
     <Nuxt />
   </div>
 </template>
@@ -51,5 +51,20 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+</style>
+
+<style scoped>
+body,
+html {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+.v-application {
+  background-color: rgba(89, 203, 232, 0.1);
+  min-height: 100vh;
+  margin-bottom: -50px;
 }
 </style>

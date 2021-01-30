@@ -3,7 +3,7 @@ export default {
   ssr: false,
 
   // Target (https://go.nuxtjs.dev/config-target)
-  target: 'static',
+  target: '',
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -17,10 +17,10 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [],
+  css: ['@brown-ccv/disco-styles', 'bulma-checkradio'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [],
+  plugins: [{ src: '~/plugins/prism', mode: 'client' }],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -34,8 +34,29 @@ export default {
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: [],
+  modules: [
+    [
+      'nuxt-buefy',
+      'nuxt-highlightjs',
+      {
+        style: 'monokai-sublime',
+      },
+    ],
+  ],
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {},
+  build: {
+    /*
+     ** You can extend webpack config here
+     */
+    hotMiddleware: {
+      client: {
+        // turn off client overlay when errors are present
+        overlay: false,
+      },
+    },
+    extend(config, { isDev, isClient }) {
+      config.resolve.alias.vue = 'vue/dist/vue.common'
+    },
+  },
 }
