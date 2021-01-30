@@ -8,6 +8,9 @@
     <div v-if="this.active_nav == 'xnat2bids'" class="container">
       <Xnat2bids />
     </div>
+    <div v-if="this.active_nav == 'bids-validator'" class="container">
+      <Bidsvalidator />
+    </div>
     <div>
       <footer class="extrapad footer">
         <made-with-love by="CCV" link="ccv.brown.edu" />
@@ -23,12 +26,14 @@ import Overview from '~/components/Overview.vue'
 import Xnat2bids from '~/components/Xnat2bids.vue'
 import 'vue-made-with-love'
 import 'vue-made-with-love/dist/vue-made-with-love.css'
+import Bidsvalidator from '~/components/Bidsvalidator.vue'
 export default {
   components: {
     Navbar,
     Hero,
     Overview,
     Xnat2bids,
+    Bidsvalidator,
   },
   computed: {
     active_nav() {
