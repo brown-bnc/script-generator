@@ -17,7 +17,7 @@
           >
             <strong class="level-left">SBATCH Configuration</strong>
           </div>
-          <Basejobform />
+          <Basejobform sbatch-index="0" />
         </b-collapse>
         <b-collapse
           aria-id="contentIdForA11y2"

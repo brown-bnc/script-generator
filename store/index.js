@@ -12,7 +12,7 @@ export const state = () => ({
       time: { hours: 1, minutes: 0, seconds: 0 },
       email: null,
       emailevents: [],
-      output: '/gpfs/scratch/%u/test-%j.out',
+      output: '/gpfs/scratch/%u/xnat2bids-%j.out',
     },
     {
       partition: 'BATCH',
@@ -20,11 +20,11 @@ export const state = () => ({
       jobname: 'bids-validator',
       nnodes: 1,
       ncpus: 1,
-      memory: 16,
-      time: { hours: 1, minutes: 0, seconds: 0 },
+      memory: 4,
+      time: { hours: 0, minutes: 30, seconds: 0 },
       email: null,
       emailevents: [],
-      output: '/gpfs/scratch/%u/test-%j.out',
+      output: '/gpfs/scratch/%u/bids-validator-%j.out',
     },
   ],
 })

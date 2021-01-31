@@ -10,8 +10,8 @@
     </div>
     <div class="panel-block custom-pad">
       <prism :key="sbatchCodeKey" lang="bash">
-        <Basejobfragment sbatch-index="0" />
-        <Xnat2bidsfragment />
+        <Basejobfragment sbatch-index="1" />
+        <Bidsvalidatorfragment />
       </prism>
     </div>
   </div>
@@ -20,11 +20,11 @@
 <script>
 import { mapState } from 'vuex'
 import Basejobfragment from '~/components/Basejobfragment.vue'
-import Xnat2bidsfragment from '~/components/Xnat2bidsfragment.vue'
+import Bidsvalidatorfragment from '~/components/Bidsvalidatorfragment.vue'
 
 export default {
   components: {
-    Xnat2bidsfragment,
+    Bidsvalidatorfragment,
     Basejobfragment,
   },
   data() {
@@ -35,11 +35,11 @@ export default {
   computed: {
     ...mapState({
       sbatch: 'sbatch',
-      xnat2bids: 'xnat2bids',
+      bidsvalidator: 'bidsvalidator',
     }),
     batchKey() {
-      let finalString = JSON.stringify(this.sbatch[0])
-      finalString += JSON.stringify(this.xnat2bids)
+      let finalString = JSON.stringify(this.sbatch[1])
+      finalString += JSON.stringify(this.bidsvalidator)
       return finalString
     },
   },

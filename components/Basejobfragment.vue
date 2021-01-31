@@ -2,17 +2,17 @@
   <fragment>
     <pre>
     #!/bin/bash
-    <fragment v-if="sbatch[active_id].jobname">#SBATCH --job-name {{ sbatch[0].jobname }} </fragment>
-    <fragment v-if="sbatch[0].partition">#SBATCH --partition {{ sbatch[0].partition }}</fragment>
-    <fragment v-if="sbatch[0].nnodes">#SBATCH --nodes {{ sbatch[0].nnodes }} </fragment>
-    <fragment v-if="sbatch[0].ncpus">#SBATCH --cpus-per-task {{ sbatch[0].ncpus }} </fragment>
-    <fragment v-if="sbatch[0].memory">#SBATCH --mem {{ sbatch[0].memory }} </fragment>
-    <fragment v-if="sbatch[0].time">#SBATCH --time {{ timeString }} </fragment>
-    <fragment v-if="sbatch[0].output">#SBATCH --output {{ sbatch[0].output }} </fragment>
-    <fragment v-if="sbatch[0].emailevents.length > 0">
+    <fragment v-if="sbatch[sbatchIndex].jobname">#SBATCH --job-name {{ sbatch[sbatchIndex].jobname }} </fragment>
+    <fragment v-if="sbatch[sbatchIndex].partition">#SBATCH --partition {{ sbatch[sbatchIndex].partition }}</fragment>
+    <fragment v-if="sbatch[sbatchIndex].nnodes">#SBATCH --nodes {{ sbatch[sbatchIndex].nnodes }} </fragment>
+    <fragment v-if="sbatch[sbatchIndex].ncpus">#SBATCH --cpus-per-task {{ sbatch[sbatchIndex].ncpus }} </fragment>
+    <fragment v-if="sbatch[sbatchIndex].memory">#SBATCH --mem {{ sbatch[sbatchIndex].memory }} </fragment>
+    <fragment v-if="sbatch[sbatchIndex].time">#SBATCH --time {{ timeString }} </fragment>
+    <fragment v-if="sbatch[sbatchIndex].output">#SBATCH --output {{ sbatch[sbatchIndex].output }} </fragment>
+    <fragment v-if="sbatch[sbatchIndex].emailevents.length > 0">
     #SBATCH --mail-type {{ emailEventString }} 
     </fragment>
-    <fragment v-if="sbatch[0].email">#SBATCH --mail-user {{ sbatch[0].email }} </fragment>
+    <fragment v-if="sbatch[sbatchIndex].email">#SBATCH --mail-user {{ sbatch[sbatchIndex].email }} </fragment>
     </pre>
   </fragment>
 </template>
@@ -23,6 +23,13 @@ import { mapState } from 'vuex'
 import { mapMultiRowFields } from 'vuex-map-fields'
 
 export default {
+  props: {
+    sbatchIndex: {
+      type: Number,
+      required: true,
+      validator: (value) => [0, 1].includes(value),
+    },
+  },
   components: {
     Fragment,
   },
@@ -41,19 +48,19 @@ export default {
     },
     timeString() {
       return (
-        String(this.sbatch[0].time.hours) +
+        String(this.sbatch[this.sbatchIndex].time.hours) +
         ':' +
-        String(this.sbatch[0].time.minutes).padStart(2, '0') +
+        String(this.sbatch[this.sbatchIndex].time.minutes).padStart(2, '0') +
         ':' +
-        String(this.sbatch[0].time.seconds).padStart(2, '0')
+        String(this.sbatch[this.sbatchIndex].time.seconds).padStart(2, '0')
       )
     },
     emailEventString() {
-      console.log(this.sbatch[0].emailevents)
-      if (this.sbatch[0].emailevents.includes('ALL')) {
+      console.log(this.sbatch[this.sbatchIndex].emailevents)
+      if (this.sbatch[this.sbatchIndex].emailevents.includes('ALL')) {
         return 'ALL'
       } else {
-        return this.sbatch[0].emailevents.join(', ')
+        return this.sbatch[this.sbatchIndex].emailevents.join(', ')
       }
     },
   },

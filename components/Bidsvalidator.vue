@@ -17,7 +17,7 @@
           >
             <strong class="level-left">SBATCH Configuration</strong>
           </div>
-          <Basejobform />
+          <Basejobform sbatch-index="1" />
         </b-collapse>
         <b-collapse
           aria-id="contentIdForA11y2"
@@ -34,29 +34,30 @@
           >
             <strong class="level-left">BIDS Validator Configuration</strong>
           </div>
-          <Xnat2bidsform />
+          <Bidsvalidatorform />
         </b-collapse>
       </div>
-      <div class="column column-right"><Xnat2bidssbatch /></div>
+      <div class="column column-right"><Bidsvalidatorsbatch /></div>
     </div>
   </div>
 </template>
 
 <script>
 import Basejobform from '~/components/Basejobform.vue'
-import Xnat2bidsform from '~/components/Xnat2bidsform.vue'
-import Xnat2bidssbatch from '~/components/Xnat2bidssbatch.vue'
+import Bidsvalidatorsbatch from '~/components/Bidsvalidatorsbatch.vue'
+import Bidsvalidatorform from '~/components/Bidsvalidatorform.vue'
 
 export default {
   components: {
     Basejobform,
-    Xnat2bidssbatch,
-    Xnat2bidsform,
+    Bidsvalidatorsbatch,
+    Bidsvalidatorform,
   },
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- Add ",
+    Bidsvalidatorformscoped" attribute to limit CSS to this component only -->
 <style scoped>
 .column-left {
   /* padding-right: 0; */
