@@ -18,7 +18,7 @@
     #--------- directories ---------
 
     # Output directory
-    output_dir={{output_path}}
+    output_dir="{{ output_path_validated }}"
     mkdir -m 775 ${output_dir} || echo "Output directory already exists"
     </fragment>
 
@@ -93,9 +93,23 @@ export default {
 
     ...mapMultiRowFields(['xnat2bids.sessions']),
 
+    output_path_validated() {
+      if (this.output_path) {
+        return this.output_path
+      } else {
+        return 'MUST ENTER PATH IN FORM'
+      }
+    },
+
     sessionDictString() {
       let key = this.sessions[0].participant_id
+      if (!key) {
+        key = 'MUST ENTER IN FORM'
+      }
       let val = this.sessions[0].xnat_id
+      if (!val) {
+        val = 'MUST ENTER IN FORM'
+      }
       const lines = [`declare -A sessions=([${key}]="${val}"`]
       for (let i = 1; i < this.sessions.length; i++) {
         key = this.sessions[i].participant_id
@@ -108,6 +122,9 @@ export default {
 
     seriesDictString() {
       let key = this.sessions[0].participant_id
+      if (!key) {
+        key = 'MUST ENTER IN FORM'
+      }
       let sval = this.sessions[0].s_series.join(' -s ')
       sval = sval.length > 0 ? '-s ' + sval : sval
 
@@ -149,7 +166,10 @@ export default {
       if (this.cleanup) {
         lines.push(`    --cleanup`)
       }
-      if (this.seriesDictString !== '') {
+      if (this.seriesDictString.split('=')[2] !== `"")`) {
+        console.log(this.seriesDictString.split('='))
+        console.log(this.seriesDictString)
+
         lines.push(`    \${INCLUDE_SKIP_STRING}`)
       }
       return lines.join(' \\\n')

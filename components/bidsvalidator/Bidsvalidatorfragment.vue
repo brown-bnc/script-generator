@@ -8,10 +8,10 @@
     # Version of bids-validator being used
     version={{ version }}
     # Path to Singularity Image for xnat-tools (maintained by bnc)
-    simg=/gpfs/data/bnc/simgs/bids/bids-validator-${version}.sif
+    simg="/gpfs/data/bnc/simgs/bids/validator-${version}.sif"
     
     #--------- directories ---------
-    bids_directory={{ bids_dir }}
+    bids_directory="{{ bids_dir_validated }}""
     #--------- Run bids-validator ---------
     # Runs singularity command to 
     # execute bids-validator. 
@@ -58,6 +58,13 @@ export default {
 
     ...mapMultiRowFields(['xnat2bids.sessions']),
 
+    bids_dir_validated() {
+      if (this.bids_dir) {
+        return this.bids_dir
+      } else {
+        return 'MUST ENTER PATH IN FORM'
+      }
+    },
     sessionDictString() {
       let key = this.sessions[0].participant_id
       let val = this.sessions[0].xnat_id
