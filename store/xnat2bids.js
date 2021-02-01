@@ -1,15 +1,15 @@
 import { getField, updateField } from 'vuex-map-fields'
 
 export const state = () => ({
-  version: 'latest',
+  version: 'v1.0.4',
   output_path: null,
   needs_bidsmap: false,
   bidsmap_dir: '/gpfs/data/bnc/sanes_sadlum/preprocessing/xnat2bids',
   bidsmap_file: 'bidsmap.json',
   sessions: [
     {
-      participant_id: 135,
-      xnat_id: 'XNAT3_E00013',
+      participant_id: null,
+      xnat_id: null,
       i_series: [],
       s_series: [7, 15, 16, 17, 18],
     },

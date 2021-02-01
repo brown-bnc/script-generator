@@ -1,7 +1,7 @@
 import { getField, updateField } from 'vuex-map-fields'
 
 export const state = () => ({
-  version: 'latest',
+  version: 'v1.5.9',
   bids_dir: null,
   ignore_warnings: false,
   ignore_nifti_headers: false,

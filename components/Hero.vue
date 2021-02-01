@@ -28,7 +28,7 @@
                 }"
                 @click="activate('overview')"
               >
-                <a> Overview </a>
+                <a class="custom-size"> Overview </a>
               </li>
               <li
                 :class="{
@@ -36,7 +36,7 @@
                 }"
                 @click="activate('xnat2bids')"
               >
-                <a> xnat2bids </a>
+                <a class="custom-size"> xnat2bids </a>
               </li>
               <li
                 :class="{
@@ -45,7 +45,7 @@
                 }"
                 @click="activate('bids-validator')"
               >
-                <a> bids-validator </a>
+                <a class="custom-size"> bids-validator </a>
               </li>
             </ul>
           </nav>
@@ -76,3 +76,10 @@ export default {
   },
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.custom-size {
+  font-size: 18px;
+}
+</style>

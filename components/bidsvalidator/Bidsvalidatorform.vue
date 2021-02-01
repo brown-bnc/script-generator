@@ -24,8 +24,15 @@
             <b-field label="Version of bids-validator">
               <b-input v-model="version"></b-input>
             </b-field>
-            <b-field label="Bids Directory">
-              <b-input v-model="bids_dir"></b-input>
+            <b-field
+              label="Bids Directory"
+              type="is-warning"
+              message="Required"
+            >
+              <b-input
+                v-model="bids_dir"
+                placeholder="/gpfs/data/bnc/shared/bids-export/${USER}/sanes/study-sadlum/bids"
+              ></b-input>
             </b-field>
           </div>
         </div>

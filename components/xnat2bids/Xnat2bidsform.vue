@@ -24,8 +24,15 @@
             <b-field label="Version of xnat-tools">
               <b-input v-model="version"></b-input>
             </b-field>
-            <b-field label="Output Path">
-              <b-input v-model="output_path"></b-input>
+            <b-field
+              label="Output Path"
+              type="is-warning"
+              message="Path required"
+            >
+              <b-input
+                v-model="output_path"
+                placeholder="/gpfs/data/bnc/shared/bids-export/${USER}"
+              ></b-input>
             </b-field>
           </div>
         </div>
@@ -56,17 +63,17 @@
             :key="index"
           >
             <b-notification :closable="false">
-              <b-field>
+              <b-field type="is-warning">
                 <p class="control">
                   <span class="button is-static is-link">Participant ID</span>
                 </p>
-                <b-input v-model="session.participant_id" />
+                <b-input v-model="session.participant_id" placeholder="135" />
               </b-field>
-              <b-field>
+              <b-field type="is-warning" message="Required">
                 <p class="control">
                   <span class="button is-static">XNAT ACCESSION #</span>
                 </p>
-                <b-input v-model="session.xnat_id" />
+                <b-input v-model="session.xnat_id" placeholder="XNAT3_E00013" />
               </b-field>
               <b-field label="Include series (empty= ALL series)">
                 <b-taginput
