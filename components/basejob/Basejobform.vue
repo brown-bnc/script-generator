@@ -62,20 +62,24 @@
         </div>
         <div class="card-content">
           <div class="content">
-            <b-field grouped label="Wall-time for your job (HH:MM:SS)">
+            <b-field
+              grouped
+              group-multiline
+              label="Wall-time for your job (HH:MM:SS)"
+            >
               <b-numberinput
-                v-model="sbatch[sbatchIndex].hours"
-                :min="1"
+                v-model="sbatch[sbatchIndex].time.hours"
+                :min="0"
                 :max="100"
               ></b-numberinput>
               <b-numberinput
-                v-model="sbatch[sbatchIndex].minutes"
-                :min="1"
+                v-model="sbatch[sbatchIndex].time.minutes"
+                :min="0"
                 :max="60"
               ></b-numberinput>
               <b-numberinput
-                v-model="sbatch[sbatchIndex].seconds"
-                :min="1"
+                v-model="sbatch[sbatchIndex].time.seconds"
+                :min="0"
                 :max="60"
               ></b-numberinput>
             </b-field>

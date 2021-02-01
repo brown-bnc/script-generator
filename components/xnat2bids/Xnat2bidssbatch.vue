@@ -19,8 +19,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import Basejobfragment from '~/components/Basejobfragment.vue'
-import Xnat2bidsfragment from '~/components/Xnat2bidsfragment.vue'
+import Basejobfragment from '~/components/basejob/Basejobfragment.vue'
+import Xnat2bidsfragment from '~/components/xnat2bids/Xnat2bidsfragment.vue'
 
 export default {
   components: {

@@ -19,8 +19,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import Basejobfragment from '~/components/Basejobfragment.vue'
-import Bidsvalidatorfragment from '~/components/Bidsvalidatorfragment.vue'
+import Basejobfragment from '~/components/basejob/Basejobfragment.vue'
+import Bidsvalidatorfragment from '~/components/bidsvalidator/Bidsvalidatorfragment.vue'
 
 export default {
   components: {

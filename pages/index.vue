@@ -23,10 +23,10 @@
 import Navbar from '~/components/Navbar.vue'
 import Hero from '~/components/Hero.vue'
 import Overview from '~/components/Overview.vue'
-import Xnat2bids from '~/components/Xnat2bids.vue'
+import Xnat2bids from '~/components/xnat2bids/Xnat2bids.vue'
 import 'vue-made-with-love'
 import 'vue-made-with-love/dist/vue-made-with-love.css'
-import Bidsvalidator from '~/components/Bidsvalidator.vue'
+import Bidsvalidator from '~/components/bidsvalidator/Bidsvalidator.vue'
 export default {
   components: {
     Navbar,
