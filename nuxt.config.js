@@ -6,8 +6,8 @@ export default {
   target: 'static',
 
   router: {
-    base: '/script-generator/'
-  }
+    base: '/script-generator/',
+  },
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
