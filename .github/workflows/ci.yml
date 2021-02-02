@@ -40,7 +40,9 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies 👨🏻‍💻
-        run: yarn
+        run: |
+          npm config set "//npm.pkg.github.com/:_authToken" ${{ secrets.GH_DISCO_TOKEN }}
+          yarn
 
       - name: Run linter 👀
         run: yarn lint
