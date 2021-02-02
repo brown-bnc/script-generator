@@ -17,7 +17,7 @@
           >
             <strong class="level-left">SBATCH Configuration</strong>
           </div>
-          <Basejobform />
+          <Basejobform sbatch-index="0" />
         </b-collapse>
         <b-collapse
           aria-id="contentIdForA11y2"
@@ -43,9 +43,9 @@
 </template>
 
 <script>
-import Basejobform from '~/components/Basejobform.vue'
-import Xnat2bidsform from '~/components/Xnat2bidsform.vue'
-import Xnat2bidssbatch from '~/components/Xnat2bidssbatch.vue'
+import Basejobform from '~/components/basejob/Basejobform.vue'
+import Xnat2bidsform from '~/components/xnat2bids/Xnat2bidsform.vue'
+import Xnat2bidssbatch from '~/components/xnat2bids/Xnat2bidssbatch.vue'
 
 export default {
   components: {
