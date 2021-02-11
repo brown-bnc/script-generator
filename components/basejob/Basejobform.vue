@@ -39,6 +39,9 @@
                 <span>GPU</span>
               </b-radio-button>
             </b-field>
+            <b-field label="Condo">
+              <b-input v-model="sbatch[sbatchIndex].condo"></b-input>
+            </b-field>
           </div>
         </div>
       </b-collapse>

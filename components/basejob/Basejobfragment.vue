@@ -4,15 +4,17 @@
     #!/bin/bash
     <fragment v-if="sbatch[sbatchIndex].jobname">#SBATCH --job-name {{ sbatch[sbatchIndex].jobname }} </fragment>
     <fragment v-if="sbatch[sbatchIndex].partition">#SBATCH --partition {{ sbatch[sbatchIndex].partition }}</fragment>
-    <fragment v-if="sbatch[sbatchIndex].nnodes">#SBATCH --nodes {{ sbatch[sbatchIndex].nnodes }} </fragment>
-    <fragment v-if="sbatch[sbatchIndex].ncpus">#SBATCH --cpus-per-task {{ sbatch[sbatchIndex].ncpus }} </fragment>
-    <fragment v-if="sbatch[sbatchIndex].memory">#SBATCH --mem {{ sbatch[sbatchIndex].memory }} </fragment>
-    <fragment v-if="sbatch[sbatchIndex].time">#SBATCH --time {{ timeString }} </fragment>
-    <fragment v-if="sbatch[sbatchIndex].output">#SBATCH --output {{ sbatch[sbatchIndex].output }} </fragment>
+    <fragment v-if="sbatch[sbatchIndex].condo">#SBATCH --account {{ sbatch[sbatchIndex].condo }}</fragment>
+    <fragment v-if="sbatch[sbatchIndex].nnodes">#SBATCH --nodes {{ sbatch[sbatchIndex].nnodes }}</fragment>
+    <fragment v-if="sbatch[sbatchIndex].ncpus">#SBATCH --cpus-per-task {{ sbatch[sbatchIndex].ncpus }}</fragment>
+    <fragment v-if="sbatch[sbatchIndex].memory">#SBATCH --mem {{ sbatch[sbatchIndex].memory }}</fragment>
+    <fragment v-if="sbatch[sbatchIndex].time">#SBATCH --time {{ timeString }}</fragment>
+    <fragment v-if="sbatch[sbatchIndex].output">#SBATCH --output {{ sbatch[sbatchIndex].output }}</fragment>
     <fragment v-if="sbatch[sbatchIndex].emailevents.length > 0">
     #SBATCH --mail-type {{ emailEventString }} 
     </fragment>
-    <fragment v-if="sbatch[sbatchIndex].email">#SBATCH --mail-user {{ sbatch[sbatchIndex].email }} </fragment>
+    <fragment v-if="sbatch[sbatchIndex].email">#SBATCH --mail-user {{ sbatch[sbatchIndex].email }}</fragment>
+    <fragment v-if="arrayJobString">#SBATCH --array={{arrayJobString}}</fragment>
     </pre>
   </fragment>
 </template>
@@ -28,6 +30,11 @@ export default {
       type: Number,
       required: true,
       validator: (value) => [0, 1].includes(value),
+    },
+    arrayJobString: {
+      type: String,
+      required: false,
+      default: null,
     },
   },
   components: {

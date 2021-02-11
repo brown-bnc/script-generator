@@ -10,7 +10,10 @@
     </div>
     <div class="panel-block custom-pad">
       <prism :key="sbatchCodeKey" lang="bash">
-        <Basejobfragment sbatch-index="0" />
+        <Basejobfragment
+          sbatch-index="0"
+          v-bind:array-job-string="arrayJobString"
+        />
         <Xnat2bidsfragment />
       </prism>
     </div>
@@ -19,6 +22,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import { mapMultiRowFields } from 'vuex-map-fields'
 import Basejobfragment from '~/components/basejob/Basejobfragment.vue'
 import Xnat2bidsfragment from '~/components/xnat2bids/Xnat2bidsfragment.vue'
 
@@ -41,6 +45,22 @@ export default {
       let finalString = JSON.stringify(this.sbatch[0])
       finalString += JSON.stringify(this.xnat2bids)
       return finalString
+    },
+    ...mapMultiRowFields(['xnat2bids.sessions']),
+
+    arrayJobString() {
+      const key = this.sessions[0].participant_id
+      const jobArray = []
+      if (!key) {
+        return null
+      }
+      jobArray.push(key)
+
+      for (let i = 1; i < this.sessions.length; i++) {
+        jobArray.push(this.sessions[i].participant_id)
+      }
+      console.log(jobArray.join(','))
+      return jobArray.join(',')
     },
   },
   watch: {
