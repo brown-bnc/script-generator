@@ -59,7 +59,6 @@ export default {
       for (let i = 1; i < this.sessions.length; i++) {
         jobArray.push(this.sessions[i].participant_id)
       }
-      console.log(jobArray.join(','))
       return jobArray.join(',')
     },
   },
@@ -71,7 +70,6 @@ export default {
   methods: {
     updateKey() {
       this.sbatchCodeKey = 'sbatch_code_' + Math.floor(Math.random() * 100 + 1)
-      console.log(this.sbatchCodeKey)
     },
   },
 }
