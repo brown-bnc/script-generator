@@ -26,8 +26,8 @@ export const mutations = {
   addSession(state) {
     console.log('here')
     state.sessions.push({
-      participant_id: 135,
-      xnat_id: 'XNAT3_E00013',
+      participant_id: null,
+      xnat_id: null,
       i_series: [],
       s_series: [7, 15, 16, 17, 18],
     })
