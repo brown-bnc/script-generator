@@ -2455,7 +2455,7 @@ ajv-keywords@^3.1.0, ajv-keywords@^3.4.1, ajv-keywords@^3.5.2:
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.5.2.tgz#31f29da5ab6e00d1c2d329acf7b5929614d5014d"
   integrity sha512-5p6WTN0DdTGVQk6VjcEju19IgaHudalcfabD7yhDGeA6bcQnmL+CpveLJq/3hvfwd1aof6L386Ougkx6RfyMIQ==
 
-ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.3, ajv@^6.12.4, ajv@^6.12.5:
+ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.3, ajv@^6.12.4, ajv@^6.12.5, ajv@^6.12.6:
   version "6.12.6"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
   integrity sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==
@@ -14709,6 +14709,14 @@ vue-eslint-parser@^7.0.0:
     espree "^6.2.1"
     esquery "^1.0.1"
     lodash "^4.17.15"
+
+vue-form-json-schema@^2.9.5:
+  version "2.9.5"
+  resolved "https://registry.yarnpkg.com/vue-form-json-schema/-/vue-form-json-schema-2.9.5.tgz#cefb565e0c23f4910e419f81e05df8be95d96374"
+  integrity sha512-rhXx9VBjpQJdGfvUwcy3vI2QuGR1oIWmpho+plpHqwmf92bABXyG4Io7fykfA959q0MgH/d5gJmZMUA4AAKjkg==
+  dependencies:
+    ajv "^6.12.6"
+    lodash "^4.17.20"
 
 vue-fragment@^1.5.1:
   version "1.5.1"

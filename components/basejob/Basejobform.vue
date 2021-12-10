@@ -1,6 +1,13 @@
 <template>
   <div>
-    <section>
+    <b-input v-model="sbatch[sbatchIndex].jobname"></b-input>
+    <vue-form-json-schema
+      v-model="sbatch[sbatchIndex]"
+      :schema="schema"
+      :ui-schema="uiSchema"
+    ></vue-form-json-schema>
+    {{ sbatch[sbatchIndex].jobname }}
+    <!-- <section>
       <b-collapse
         :key="0"
         class="card"
@@ -179,12 +186,13 @@
           </div>
         </div>
       </b-collapse>
-    </section>
+    </section> -->
   </div>
 </template>
 
 <script>
 import { mapMultiRowFields } from 'vuex-map-fields'
+import VueFormJsonSchema from 'vue-form-json-schema/dist/vue-form-json-schema.esm.js'
 
 export default {
   props: {
@@ -194,15 +202,61 @@ export default {
       validator: (value) => [0, 10].includes(value),
     },
   },
+  components: {
+    'vue-form-json-schema': VueFormJsonSchema,
+  },
   data() {
     return {
       allEmailEvents: 0,
       isOpen: 0,
+      state: {},
+      //   model: { jobname: 'hello' },
+      schema: {
+        type: 'object',
+        properties: {
+          jobname: {
+            type: 'string',
+          },
+        },
+      },
     }
   },
   computed: {
     ...mapMultiRowFields(['sbatch']),
+    uiSchema() {
+      return [
+        {
+          component: 'input',
+          model: 'jobname',
+          fieldOptions: {
+            class: ['form-control'],
+            on: ['input'],
+            attrs: {
+              placeholder: 'Please enter your name',
+            },
+          },
+        },
+      ]
+    },
   },
+
+  //   computed: {
+  //     // ...mapMultiRowFields(['sbatch']),
+
+  //     uiSchema: [
+  //       {
+  //         component: 'input',
+  //         model: 'jobname',
+  //         fieldOptions: {
+  //           class: ['form-control'],
+  //           on: ['input'],
+  //           attrs: {
+  //             placeholder: 'Please enter your name',
+  //           },
+  //         },
+  //       },
+  //     ],
+  //   },
   watch: {
     allEmailEvents() {
       if (this.allEmailEvents) {
@@ -224,6 +278,12 @@ export default {
     },
     clearIconClick() {
       this.email = ''
+    },
+    onChange(value) {
+      this.model = value
+    },
+    onChangeState(value) {
+      this.state = value
     },
   },
 }
