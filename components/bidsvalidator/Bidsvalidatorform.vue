@@ -39,7 +39,7 @@
       </b-collapse>
 
       <b-collapse
-        :key="2"
+        :key="1"
         class="card"
         animation="slide"
         :open="isOpen == 1"
