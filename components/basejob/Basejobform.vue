@@ -68,17 +68,17 @@
               label="Wall-time for your job (HH:MM:SS)"
             >
               <b-numberinput
-                v-model="sbatch[sbatchIndex].time.hours"
+                v-model="sbatch[sbatchIndex].hours"
                 :min="0"
                 :max="100"
               ></b-numberinput>
               <b-numberinput
-                v-model="sbatch[sbatchIndex].time.minutes"
+                v-model="sbatch[sbatchIndex].minutes"
                 :min="0"
                 :max="60"
               ></b-numberinput>
               <b-numberinput
-                v-model="sbatch[sbatchIndex].time.seconds"
+                v-model="sbatch[sbatchIndex].seconds"
                 :min="0"
                 :max="60"
               ></b-numberinput>
