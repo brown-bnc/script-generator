@@ -2,9 +2,9 @@
   <div>
     <section>
       <b-collapse
+        :key="0"
         class="card"
         animation="slide"
-        :key="0"
         :open="isOpen == 0"
         @open="isOpen = 0"
       >
@@ -43,9 +43,9 @@
         </div>
       </b-collapse>
       <b-collapse
+        :key="1"
         class="card"
         animation="slide"
-        :key="1"
         :open="isOpen == 1"
         @open="isOpen = 1"
       >
@@ -108,9 +108,9 @@
         </div>
       </b-collapse>
       <b-collapse
+        :key="2"
         class="card"
         animation="slide"
-        :key="2"
         :open="isOpen == 2"
         @open="isOpen = 2"
       >
@@ -169,8 +169,8 @@
             </b-field>
             <b-field>
               <b-input
-                placeholder="Email"
                 v-model="sbatch[sbatchIndex].email"
+                placeholder="Email"
                 type="email"
                 icon="email"
               >
@@ -200,6 +200,9 @@ export default {
       isOpen: 0,
     }
   },
+  computed: {
+    ...mapMultiRowFields(['sbatch']),
+  },
   watch: {
     allEmailEvents() {
       if (this.allEmailEvents) {
@@ -214,9 +217,6 @@ export default {
         })
       }
     },
-  },
-  computed: {
-    ...mapMultiRowFields(['sbatch']),
   },
   methods: {
     searchIconClick() {

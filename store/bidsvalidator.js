@@ -14,11 +14,7 @@ export const mutations = {
   updateField,
   // We'll use this mutation to
   // dynamically add new sessions.
-  sayHello(state) {
-    console.log('hello')
-  },
   addSession(state) {
-    console.log('here')
     state.sessions.push({
       participant_id: 135,
       xnat_id: 'XNAT3_E00013',
@@ -27,7 +23,6 @@ export const mutations = {
     })
   },
   popSession(state) {
-    console.log('here')
     state.sessions.pop()
   },
 }

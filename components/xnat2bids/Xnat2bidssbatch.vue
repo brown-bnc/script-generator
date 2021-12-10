@@ -51,7 +51,6 @@ export default {
   methods: {
     updateKey() {
       this.sbatchCodeKey = 'sbatch_code_' + Math.floor(Math.random() * 100 + 1)
-      console.log(this.sbatchCodeKey)
     },
   },
 }
