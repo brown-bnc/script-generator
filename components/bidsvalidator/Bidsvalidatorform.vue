@@ -2,9 +2,9 @@
   <div>
     <section>
       <b-collapse
+        :key="0"
         class="card"
         animation="slide"
-        :key="0"
         :open="isOpen == 0"
         @open="isOpen = 0"
       >
@@ -39,9 +39,9 @@
       </b-collapse>
 
       <b-collapse
+        :key="1"
         class="card"
         animation="slide"
-        :key="2"
         :open="isOpen == 1"
         @open="isOpen = 1"
       >

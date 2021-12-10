@@ -24,7 +24,6 @@ export const mutations = {
   // We'll use these mutation to
   // dynamically add/pop sessions.
   addSession(state) {
-    console.log('here')
     state.sessions.push({
       participant_id: 135,
       xnat_id: 'XNAT3_E00013',
@@ -33,7 +32,6 @@ export const mutations = {
     })
   },
   popSession(state) {
-    console.log('here')
     state.sessions.pop()
   },
 }

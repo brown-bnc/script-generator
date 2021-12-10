@@ -2,9 +2,9 @@
   <div>
     <section>
       <b-collapse
+        :key="0"
         class="card"
         animation="slide"
-        :key="0"
         :open="isOpen == 0"
         @open="isOpen = 0"
       >
@@ -39,9 +39,9 @@
       </b-collapse>
 
       <b-collapse
+        :key="1"
         class="card"
         animation="slide"
-        :key="1"
         :open="isOpen == 1"
         @open="isOpen = 1"
       >
@@ -58,9 +58,9 @@
         </div>
         <div class="card-content">
           <div
-            class="content"
             v-for="(session, index) in sessions"
             :key="index"
+            class="content"
           >
             <b-notification :closable="false">
               <b-field type="is-warning">
@@ -101,8 +101,8 @@
             >Add Session</b-button
           >
           <b-button
-            type="is-link"
             v-if="sessions.length > 1"
+            type="is-link"
             outlined
             @click="removeSession"
             >Remove Session</b-button
@@ -111,9 +111,9 @@
       </b-collapse>
 
       <b-collapse
+        :key="2"
         class="card"
         animation="slide"
-        :key="2"
         :open="isOpen == 1"
         @open="isOpen = 1"
       >

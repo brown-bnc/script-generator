@@ -2,13 +2,13 @@
   <div>
     <Navbar />
     <Hero />
-    <div v-if="this.active_nav == 'overview'" class="container">
+    <div v-if="active_nav == 'overview'" class="container">
       <Overview />
     </div>
-    <div v-if="this.active_nav == 'xnat2bids'" class="container">
+    <div v-if="active_nav == 'xnat2bids'" class="container">
       <Xnat2bids />
     </div>
-    <div v-if="this.active_nav == 'bids-validator'" class="container">
+    <div v-if="active_nav == 'bids-validator'" class="container">
       <Bidsvalidator />
     </div>
     <div>

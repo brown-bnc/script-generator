@@ -3,11 +3,11 @@
     <pre>
     #!/bin/bash
     <fragment v-if="sbatch[sbatchIndex].jobname">#SBATCH --job-name {{ sbatch[sbatchIndex].jobname }} </fragment>
-    <fragment v-if="sbatch[sbatchIndex].partition">#SBATCH --partition {{ sbatch[sbatchIndex].partition }}</fragment>
-    <fragment v-if="sbatch[sbatchIndex].nnodes">#SBATCH --nodes {{ sbatch[sbatchIndex].nnodes }} </fragment>
-    <fragment v-if="sbatch[sbatchIndex].ncpus">#SBATCH --cpus-per-task {{ sbatch[sbatchIndex].ncpus }} </fragment>
-    <fragment v-if="sbatch[sbatchIndex].memory">#SBATCH --mem {{ sbatch[sbatchIndex].memory }} </fragment>
-    <fragment v-if="sbatch[sbatchIndex].time">#SBATCH --time {{ timeString }} </fragment>
+    <fragment >#SBATCH --partition {{ sbatch[sbatchIndex].partition }}</fragment>
+    <fragment >#SBATCH --nodes {{ sbatch[sbatchIndex].nnodes }} </fragment>
+    <fragment >#SBATCH --cpus-per-task {{ sbatch[sbatchIndex].ncpus }} </fragment>
+    <fragment >#SBATCH --mem {{ sbatch[sbatchIndex].memory }} </fragment>
+    <fragment >#SBATCH --time {{ timeString }} </fragment>
     <fragment v-if="sbatch[sbatchIndex].output">#SBATCH --output {{ sbatch[sbatchIndex].output }} </fragment>
     <fragment v-if="sbatch[sbatchIndex].emailevents.length > 0">
     #SBATCH --mail-type {{ emailEventString }} 
@@ -23,6 +23,9 @@ import { mapState } from 'vuex'
 import { mapMultiRowFields } from 'vuex-map-fields'
 
 export default {
+  components: {
+    Fragment,
+  },
   props: {
     sbatchIndex: {
       type: Number,
@@ -30,10 +33,6 @@ export default {
       validator: (value) => [0, 1].includes(value),
     },
   },
-  components: {
-    Fragment,
-  },
-
   computed: {
     ...mapMultiRowFields(['sbatch']),
     ...mapState(['navigation.active_nav']),
@@ -48,15 +47,14 @@ export default {
     },
     timeString() {
       return (
-        String(this.sbatch[this.sbatchIndex].time.hours) +
+        String(this.sbatch[this.sbatchIndex].hours) +
         ':' +
-        String(this.sbatch[this.sbatchIndex].time.minutes).padStart(2, '0') +
+        String(this.sbatch[this.sbatchIndex].minutes).padStart(2, '0') +
         ':' +
-        String(this.sbatch[this.sbatchIndex].time.seconds).padStart(2, '0')
+        String(this.sbatch[this.sbatchIndex].seconds).padStart(2, '0')
       )
     },
     emailEventString() {
-      console.log(this.sbatch[this.sbatchIndex].emailevents)
       if (this.sbatch[this.sbatchIndex].emailevents.includes('ALL')) {
         return 'ALL'
       } else {

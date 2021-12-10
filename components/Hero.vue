@@ -5,7 +5,7 @@
       :title="title"
       :subtitle="subtitle"
       variant="is-link"
-      :fullHeight="false"
+      :full-height="false"
     />
     <section class="hero is-link">
       <div class="hero-body">

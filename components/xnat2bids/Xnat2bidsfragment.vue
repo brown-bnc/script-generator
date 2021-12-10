@@ -167,9 +167,6 @@ export default {
         lines.push(`    --cleanup`)
       }
       if (this.seriesDictString.split('=')[2] !== `"")`) {
-        console.log(this.seriesDictString.split('='))
-        console.log(this.seriesDictString)
-
         lines.push(`    \${INCLUDE_SKIP_STRING}`)
       }
       return lines.join(' \\\n')

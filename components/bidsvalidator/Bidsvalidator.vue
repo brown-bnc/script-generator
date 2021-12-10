@@ -3,10 +3,10 @@
     <div class="columns">
       <div class="column column-left">
         <b-collapse
+          :key="1"
           aria-id="contentIdForA11y2"
           class="panel"
           animation="slide"
-          :key="1"
           :open="true"
         >
           <div
@@ -20,10 +20,10 @@
           <Basejobform sbatch-index="1" />
         </b-collapse>
         <b-collapse
+          :key="2"
           aria-id="contentIdForA11y2"
           class="panel"
           animation="slide"
-          :key="2"
           :open="true"
         >
           <div

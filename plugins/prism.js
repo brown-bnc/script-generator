@@ -46,15 +46,15 @@ Vue.component('prism', {
       default: 'js',
     },
   },
-  mounted() {
-    Prism.highlightAll()
-  },
   computed: {
     noMarginStyle() {
       return {
         margin: 0,
       }
     },
+  },
+  mounted() {
+    Prism.highlightAll()
   },
   template:
     '<div class="prism"><pre class="language-bash" :style="noMarginStyle"><code><slot></slot></code></pre></div>',
