@@ -6,7 +6,6 @@
       :ui-schema="uiSchema"
     ></vue-form-json-schema>
     {{ sbatchSchema[sbatchIndex] }}
-    <Finput label="dsjfhsdj" v-model="sbatch[sbatchIndex].jobname" />
     <!-- <section>
       <b-collapse
         :key="0"
@@ -216,9 +215,6 @@ export default {
           jobname: {
             type: 'string',
           },
-          jobname2: {
-            type: 'string',
-          },
         },
       },
     }
@@ -233,16 +229,10 @@ export default {
           model: 'jobname',
           fieldOptions: {
             props: {
-              label: 'This is you super label',
+              label: 'Slurm Job Name',
+              info: 'String identifying your job in the SLURM queue',
             },
             on: 'input',
-          },
-        },
-        {
-          component: 'b-input',
-          model: 'jobname2',
-          fieldOptions: {
-            on: ['input'],
           },
         },
       ]
