@@ -192,6 +192,7 @@
 <script>
 import { mapMultiRowFields, mapFields } from 'vuex-map-fields'
 import VueFormJsonSchema from 'vue-form-json-schema/dist/vue-form-json-schema.esm.js'
+import baseJobUISchema from '~/data/basejob_ui_schema.json'
 
 export default {
   props: {
@@ -226,31 +227,7 @@ export default {
     ...mapMultiRowFields(['sbatch']),
     ...mapFields({ sbatchSchema: 'sbatchXnat2Bids' }),
     uiSchema() {
-      return [
-        {
-          component: 'Finput',
-          model: 'jobname',
-          fieldOptions: {
-            props: {
-              label: 'Slurm Job Name',
-              info: 'String identifying your job in the SLURM queue',
-            },
-            on: 'input',
-          },
-        },
-        {
-          component: 'Fradiobuttongroup',
-          model: 'partition',
-          fieldOptions: {
-            props: {
-              label: 'Partition',
-              info: 'Partition Help',
-              items: ['BATCH', 'GPU'],
-            },
-            on: 'input',
-          },
-        },
-      ]
+      return baseJobUISchema
     },
   },
   watch: {
