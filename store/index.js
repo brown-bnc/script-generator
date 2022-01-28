@@ -1,7 +1,7 @@
 import { getField, updateField } from 'vuex-map-fields'
 
 export const state = () => ({
-  sbatchXnat2Bids: [{ jobname: 'xnat2bids' }],
+  sbatchXnat2Bids: [{ jobname: 'xnat2bids', jobname2: 'isa' }],
   sbatch: [
     {
       partition: 'BATCH',

@@ -5,7 +5,9 @@
       :schema="schema"
       :ui-schema="uiSchema"
     ></vue-form-json-schema>
-    <section>
+    {{ sbatchSchema[sbatchIndex] }}
+    <Finput label="dsjfhsdj" v-model="sbatch[sbatchIndex].jobname" />
+    <!-- <section>
       <b-collapse
         :key="0"
         class="card"
@@ -184,7 +186,7 @@
           </div>
         </div>
       </b-collapse>
-    </section>
+    </section> -->
   </div>
 </template>
 
@@ -208,11 +210,13 @@ export default {
       allEmailEvents: 0,
       isOpen: 0,
       state: {},
-      //   model: { jobname: 'hello' },
       schema: {
         type: 'object',
         properties: {
           jobname: {
+            type: 'string',
+          },
+          jobname2: {
             type: 'string',
           },
         },
@@ -225,29 +229,21 @@ export default {
     uiSchema() {
       return [
         {
-          component: 'b-field',
+          component: 'Finput',
+          model: 'jobname',
           fieldOptions: {
             props: {
-              label: 'Job name',
+              label: 'This is you super label',
             },
+            on: 'input',
           },
-
-          children: [
-            {
-              component: 'b-input',
-              model: 'jobname',
-              fieldOptions: {
-                class: ['form-control'],
-                on: ['input'],
-                attrs: {
-                  placeholder: 'Please enter your name',
-                },
-                props: {
-                  label: 'hellow',
-                },
-              },
-            },
-          ],
+        },
+        {
+          component: 'b-input',
+          model: 'jobname2',
+          fieldOptions: {
+            on: ['input'],
+          },
         },
       ]
     },
