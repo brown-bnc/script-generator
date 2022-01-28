@@ -1,13 +1,11 @@
 <template>
   <div>
-    <b-input v-model="sbatch[sbatchIndex].jobname"></b-input>
     <vue-form-json-schema
-      v-model="sbatch[sbatchIndex]"
+      v-model="sbatchSchema[sbatchIndex]"
       :schema="schema"
       :ui-schema="uiSchema"
     ></vue-form-json-schema>
-    {{ sbatch[sbatchIndex].jobname }}
-    <!-- <section>
+    <section>
       <b-collapse
         :key="0"
         class="card"
@@ -186,12 +184,12 @@
           </div>
         </div>
       </b-collapse>
-    </section> -->
+    </section>
   </div>
 </template>
 
 <script>
-import { mapMultiRowFields } from 'vuex-map-fields'
+import { mapMultiRowFields, mapFields } from 'vuex-map-fields'
 import VueFormJsonSchema from 'vue-form-json-schema/dist/vue-form-json-schema.esm.js'
 
 export default {
@@ -223,40 +221,37 @@ export default {
   },
   computed: {
     ...mapMultiRowFields(['sbatch']),
+    ...mapFields({ sbatchSchema: 'sbatchXnat2Bids' }),
     uiSchema() {
       return [
         {
-          component: 'input',
-          model: 'jobname',
+          component: 'b-field',
           fieldOptions: {
-            class: ['form-control'],
-            on: ['input'],
-            attrs: {
-              placeholder: 'Please enter your name',
+            props: {
+              label: 'Job name',
             },
           },
+
+          children: [
+            {
+              component: 'b-input',
+              model: 'jobname',
+              fieldOptions: {
+                class: ['form-control'],
+                on: ['input'],
+                attrs: {
+                  placeholder: 'Please enter your name',
+                },
+                props: {
+                  label: 'hellow',
+                },
+              },
+            },
+          ],
         },
       ]
     },
   },
-
-  //   computed: {
-  //     // ...mapMultiRowFields(['sbatch']),
-
-  //     uiSchema: [
-  //       {
-  //         component: 'input',
-  //         model: 'jobname',
-  //         fieldOptions: {
-  //           class: ['form-control'],
-  //           on: ['input'],
-  //           attrs: {
-  //             placeholder: 'Please enter your name',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //   },
   watch: {
     allEmailEvents() {
       if (this.allEmailEvents) {
