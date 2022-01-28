@@ -215,6 +215,9 @@ export default {
           jobname: {
             type: 'string',
           },
+          partition: {
+            type: 'string',
+          },
         },
       },
     }
@@ -231,6 +234,18 @@ export default {
             props: {
               label: 'Slurm Job Name',
               info: 'String identifying your job in the SLURM queue',
+            },
+            on: 'input',
+          },
+        },
+        {
+          component: 'Fradiobuttongroup',
+          model: 'partition',
+          fieldOptions: {
+            props: {
+              label: 'Partition',
+              info: 'Partition Help',
+              items: ['BATCH', 'GPU'],
             },
             on: 'input',
           },
