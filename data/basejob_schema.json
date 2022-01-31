@@ -18,6 +18,9 @@
       },
       "memory": {
         "type": "array"
+      },
+      "output": {
+        "type": "string"
       }
     }
 }

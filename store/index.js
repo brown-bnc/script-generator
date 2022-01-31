@@ -9,6 +9,7 @@ export const state = () => ({
       nnodes: 1,
       ncpus: 2,
       memory: 16,
+      output: '/gpfs/scratch/%u/xnat2bids-%j.out',
     },
   ],
   sbatch: [

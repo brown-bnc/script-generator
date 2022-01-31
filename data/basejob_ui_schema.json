@@ -69,5 +69,16 @@
         },
         "on": "input"
         }
+    },
+    {
+        "component": "Finput",
+        "model": "output",
+        "fieldOptions": {
+        "props": {
+            "label": "Output Log",
+            "info": "Output Log help"
+        },
+        "on": "input"
+        }
     }       
 ]
