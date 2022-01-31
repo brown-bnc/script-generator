@@ -80,5 +80,17 @@
         },
         "on": "input"
         }
-    }       
+    },
+    {
+        "component": "Fcheckboxbuttongroup",
+        "model": "emailevents",
+        "fieldOptions": {
+        "props": {
+            "label": "Email Events",
+            "info": "Email Events Help",
+            "items": ["BEGIN", "END", "REQUEUE", "FAIL"]
+        },
+        "on": "input"
+        }
+    }    
 ]

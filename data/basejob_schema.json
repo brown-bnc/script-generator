@@ -21,6 +21,9 @@
       },
       "output": {
         "type": "string"
+      },
+      "emailevents": {
+        "type": "array"
       }
     }
 }
