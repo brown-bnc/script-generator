@@ -6,6 +6,9 @@
       },
       "partition": {
         "type": "string"
+      },
+      "walltime": {
+        "type": "array"
       }
     }
 }

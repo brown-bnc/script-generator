@@ -21,5 +21,17 @@
         },
       "on": "input"
       }
-    }
+    },
+    {
+        "component": "Fnumberinput",
+        "model": "walltime",
+        "fieldOptions": {
+          "props": {
+            "label": "Wall-time (HH:MM:SS)",
+            "info": "Wall-time help",
+            "ranges": [[0, 100], [0, 60], [0, 60]]
+          },
+        "on": "input"
+        }
+      }    
 ]

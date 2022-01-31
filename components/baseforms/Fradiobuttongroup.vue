@@ -6,7 +6,7 @@
         <b-icon size="is-small" pack="fa" icon="info-circle"></b-icon>
       </b-tooltip>
     </template>
-    <div v-for="(item, index) in items" :key="index" class="content">
+    <div v-for="(item, index) in items" :key="index">
       <b-radio-button
         :value="value"
         @input="$emit('input', $event)"
