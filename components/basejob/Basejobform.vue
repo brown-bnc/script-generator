@@ -193,6 +193,7 @@
 import { mapMultiRowFields, mapFields } from 'vuex-map-fields'
 import VueFormJsonSchema from 'vue-form-json-schema/dist/vue-form-json-schema.esm.js'
 import baseJobUISchema from '~/data/basejob_ui_schema.json'
+import baseJobSchema from '~/data/basejob_schema.json'
 
 export default {
   props: {
@@ -210,17 +211,7 @@ export default {
       allEmailEvents: 0,
       isOpen: 0,
       state: {},
-      schema: {
-        type: 'object',
-        properties: {
-          jobname: {
-            type: 'string',
-          },
-          partition: {
-            type: 'string',
-          },
-        },
-      },
+      schema: baseJobSchema,
     }
   },
   computed: {
