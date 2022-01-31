@@ -1,37 +1,73 @@
 [
     {
-      "component": "Finput",
-      "model": "jobname",
-      "fieldOptions": {
+        "component": "Finput",
+        "model": "jobname",
+        "fieldOptions": {
         "props": {
-          "label": "Slurm Job Name",
-          "info": "String identifying your job in the SLURM queue"
+            "label": "Slurm Job Name",
+            "info": "String identifying your job in the SLURM queue"
         },
         "on": "input"
-      }
+        }
     },
     {
-      "component": "Fradiobuttongroup",
-      "model": "partition",
-      "fieldOptions": {
+        "component": "Fradiobuttongroup",
+        "model": "partition",
+        "fieldOptions": {
         "props": {
-          "label": "Partition",
-          "info": "Partition Help",
-          "items": ["BATCH", "GPU"]
+            "label": "Partition",
+            "info": "Partition Help",
+            "items": ["BATCH", "GPU"]
         },
-      "on": "input"
-      }
+        "on": "input"
+        }
     },
     {
-        "component": "Fnumberinput",
+        "component": "Fnumberinputgroup",
         "model": "walltime",
         "fieldOptions": {
-          "props": {
+            "props": {
             "label": "Wall-time (HH:MM:SS)",
             "info": "Wall-time help",
             "ranges": [[0, 100], [0, 60], [0, 60]]
-          },
+        },
         "on": "input"
         }
-      }    
+    },
+    {
+        "component": "Fnumberinput",
+        "model": "nnodes",
+        "fieldOptions": {
+            "props": {
+            "label": "Number of nodes",
+            "info": "NNodes help",
+            "range": [0, 10]
+        },
+        "on": "input"
+        }
+    },
+    {
+        "component": "Fnumberinput",
+        "model": "ncpus",
+        "fieldOptions": {
+            "props": {
+            "label": "Number of cores per node",
+            "info": "NCores",
+            "range": [0, 100]
+        },
+        "on": "input"
+        }
+    },
+    {
+        "component": "Fnumberinput",
+        "model": "memory",
+        "fieldOptions": {
+            "props": {
+            "label": "RAM per node (GB)",
+            "info": "Memory help",
+            "range": [0, 1000]
+        },
+        "on": "input"
+        }
+    }       
 ]

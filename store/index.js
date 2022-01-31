@@ -2,7 +2,14 @@ import { getField, updateField } from 'vuex-map-fields'
 
 export const state = () => ({
   sbatchXnat2Bids: [
-    { jobname: 'xnat2bids', partition: 'BATCH', walltime: [1, 0, 0] },
+    {
+      jobname: 'xnat2bids',
+      partition: 'BATCH',
+      walltime: [1, 0, 0],
+      nnodes: 1,
+      ncpus: 2,
+      memory: 16,
+    },
   ],
   sbatch: [
     {

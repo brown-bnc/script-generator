@@ -9,6 +9,15 @@
       },
       "walltime": {
         "type": "array"
+      },
+      "nnodes": {
+        "type": "array"
+      },
+      "ncpus": {
+        "type": "array"
+      },
+      "memory": {
+        "type": "array"
       }
     }
 }
