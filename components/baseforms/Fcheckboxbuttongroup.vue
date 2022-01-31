@@ -2,9 +2,9 @@
   <b-field label="Email Event">
     <div v-for="(item, index) in items" :key="index">
       <b-checkbox-button
-        :value="value[index]"
-        @input="updateValue(index, $event)"
-        native-value="item"
+        :value="value"
+        @input="updateValue(index)"
+        :native-value="item"
         type="is-link"
       >
         <span>{{ item }}</span>
@@ -17,14 +17,21 @@
 export default {
   props: ['value', 'label', 'info', 'items'],
   methods: {
-    updateValue(index, val) {
-      if (val) {
-        this.$emit('input', this.value.concat(this.items[index]))
+    updateValue(index) {
+      const i = this.value.indexOf(this.items[index])
+      console.log(i)
+      console.log(index)
+      if (i > -1) {
+        console.log('splicing')
+        this.$emit(
+          'input',
+          this.value.filter((item) => item !== this.items[index])
+        )
+        console.log(this.value)
       } else {
-        const i = this.value.indexOf(this.items[index])
-        if (i > -1) {
-          this.value.splice(i, 1)
-        }
+        console.log('concat')
+        this.$emit('input', this.value.concat(this.items[index]))
+        console.log(this.value)
       }
     },
   },
