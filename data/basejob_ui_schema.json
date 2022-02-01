@@ -92,5 +92,17 @@
         },
         "on": "input"
         }
+    },
+    {
+        "component": "Finput",
+        "model": "email",
+        "fieldOptions": {
+        "props": {
+            "type": "email",
+            "icon": "email",
+            "placeholder": "Email"
+        },
+        "on": "input"
+        }
     }    
 ]

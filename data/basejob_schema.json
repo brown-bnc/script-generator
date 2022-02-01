@@ -24,6 +24,9 @@
       },
       "emailevents": {
         "type": "array"
+      },
+      "email": {
+        "type": "string"
       }
     }
 }

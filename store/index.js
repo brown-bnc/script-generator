@@ -11,6 +11,7 @@ export const state = () => ({
       memory: 16,
       output: '/gpfs/scratch/%u/xnat2bids-%j.out',
       emailevents: [],
+      email: null,
     },
   ],
   sbatch: [
