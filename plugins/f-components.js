@@ -6,6 +6,8 @@ import Fradiobuttongroup from '~/components/baseforms/Fradiobuttongroup.vue'
 import Fcheckboxbuttongroup from '~/components/baseforms/Fcheckboxbuttongroup.vue'
 import Fnumberinput from '~/components/baseforms/Fnumberinput.vue'
 import Fnumberinputgroup from '~/components/baseforms/Fnumberinputgroup.vue'
+import Fcollabsablecard from '~/components/baseforms/Fcollabsablecard.vue'
+import Fcollabsablecardgroup from '~/components/baseforms/Fcollabsablecardgroup.vue'
 
 const components = {
   Finput,
@@ -13,6 +15,8 @@ const components = {
   Fcheckboxbuttongroup,
   Fnumberinput,
   Fnumberinputgroup,
+  Fcollabsablecard,
+  Fcollabsablecardgroup,
 }
 
 Object.entries(components).forEach(([name, component]) => {

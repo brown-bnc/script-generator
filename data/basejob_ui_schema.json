@@ -1,108 +1,159 @@
 [
     {
-        "component": "Finput",
-        "model": "jobname",
-        "fieldOptions": {
-        "props": {
-            "label": "Slurm Job Name",
-            "info": "String identifying your job in the SLURM queue"
-        },
-        "on": "input"
-        }
-    },
-    {
-        "component": "Fradiobuttongroup",
-        "model": "partition",
-        "fieldOptions": {
-        "props": {
-            "label": "Partition",
-            "info": "Partition Help",
-            "items": ["BATCH", "GPU"]
-        },
-        "on": "input"
-        }
-    },
-    {
-        "component": "Fnumberinputgroup",
-        "model": "walltime",
+        "component": "Fcollabsablecard",
         "fieldOptions": {
             "props": {
-            "label": "Wall-time (HH:MM:SS)",
-            "info": "Wall-time help",
-            "ranges": [[0, 100], [0, 60], [0, 60]]
+                "title": "General: Jobname, Queue and Condo",
+                "index": 0,
+                "openidx": 0
+            }
         },
-        "on": "input"
-        }
+        "children": [
+            {
+                "component": "div",
+                "children": [
+                    {
+                        "component": "Finput",
+                        "model": "jobname",
+                        "fieldOptions": {
+                            "props": {
+                                "label": "Slurm Job Name",
+                                "info": "String identifying your job in the SLURM queue"
+                            },
+                            "on": "input"
+                        }
+                    },
+                    {
+                        "component": "Fradiobuttongroup",
+                        "model": "partition",
+                        "fieldOptions": {
+                            "props": {
+                                "label": "Partition",
+                                "info": "Partition Help",
+                                "items": ["BATCH", "GPU"]
+                            },
+                            "on": "input"
+                        }
+                    }
+                ]
+            }
+        ]
     },
     {
-        "component": "Fnumberinput",
-        "model": "nnodes",
+        "component": "Fcollabsablecard",
         "fieldOptions": {
             "props": {
-            "label": "Number of nodes",
-            "info": "NNodes help",
-            "range": [0, 10]
+                "title": "Resources: Nodes, cores and memory",
+                "index": 1,
+                "openidx": 0
+            }
         },
-        "on": "input"
-        }
+        "children": [
+            {
+                "component": "div",
+                "children": [
+                    {
+                        "component": "Fnumberinputgroup",
+                        "model": "walltime",
+                        "fieldOptions": {
+                            "props": {
+                            "label": "Wall-time (HH:MM:SS)",
+                            "info": "Wall-time help",
+                            "ranges": [[0, 100], [0, 60], [0, 60]]
+                        },
+                        "on": "input"
+                        }
+                    },
+                    {
+                        "component": "Fnumberinput",
+                        "model": "nnodes",
+                        "fieldOptions": {
+                            "props": {
+                            "label": "Number of nodes",
+                            "info": "NNodes help",
+                            "range": [0, 10]
+                        },
+                        "on": "input"
+                        }
+                    },
+                    {
+                        "component": "Fnumberinput",
+                        "model": "ncpus",
+                        "fieldOptions": {
+                            "props": {
+                            "label": "Number of cores per node",
+                            "info": "NCores",
+                            "range": [0, 100]
+                        },
+                        "on": "input"
+                        }
+                    },
+                    {
+                        "component": "Fnumberinput",
+                        "model": "memory",
+                        "fieldOptions": {
+                            "props": {
+                            "label": "RAM per node (GB)",
+                            "info": "Memory help",
+                            "range": [0, 1000]
+                        },
+                        "on": "input"
+                        }
+                    }
+                ]
+            }
+        ]
     },
     {
-        "component": "Fnumberinput",
-        "model": "ncpus",
+        "component": "Fcollabsablecard",
         "fieldOptions": {
             "props": {
-            "label": "Number of cores per node",
-            "info": "NCores",
-            "range": [0, 100]
+                "title": "Logs and Notifications",
+                "index": 2,
+                "openidx": 0
+            }
         },
-        "on": "input"
-        }
-    },
-    {
-        "component": "Fnumberinput",
-        "model": "memory",
-        "fieldOptions": {
-            "props": {
-            "label": "RAM per node (GB)",
-            "info": "Memory help",
-            "range": [0, 1000]
-        },
-        "on": "input"
-        }
-    },
-    {
-        "component": "Finput",
-        "model": "output",
-        "fieldOptions": {
-        "props": {
-            "label": "Output Log",
-            "info": "Output Log help"
-        },
-        "on": "input"
-        }
-    },
-    {
-        "component": "Fcheckboxbuttongroup",
-        "model": "emailevents",
-        "fieldOptions": {
-        "props": {
-            "label": "Email Events",
-            "info": "Email Events Help",
-            "items": ["BEGIN", "END", "REQUEUE", "FAIL"]
-        },
-        "on": "input"
-        }
-    },
-    {
-        "component": "Finput",
-        "model": "email",
-        "fieldOptions": {
-        "props": {
-            "type": "email",
-            "icon": "email",
-            "placeholder": "Email"
-        },
-        "on": "input"
-        }
-    }    
+        "children": [
+            {
+                "component": "div",
+                "children": [
+                    {
+                        "component": "Finput",
+                        "model": "output",
+                        "fieldOptions": {
+                        "props": {
+                            "label": "Output Log",
+                            "info": "Output Log help"
+                        },
+                        "on": "input"
+                        }
+                    },
+                    {
+                        "component": "Fcheckboxbuttongroup",
+                        "model": "emailevents",
+                        "fieldOptions": {
+                        "props": {
+                            "label": "Email Events",
+                            "info": "Email Events Help",
+                            "items": ["BEGIN", "END", "REQUEUE", "FAIL"]
+                        },
+                        "on": "input"
+                        }
+                    },
+                    {
+                        "component": "Finput",
+                        "model": "email",
+                        "fieldOptions": {
+                        "props": {
+                            "type": "email",
+                            "icon": "email",
+                            "placeholder": "Email"
+                        },
+                        "on": "input"
+                        }
+                    } 
+                ]
+            }
+        ]
+    }
 ]
