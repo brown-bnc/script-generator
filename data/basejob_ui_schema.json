@@ -1,6 +1,6 @@
 [
     {
-        "component": "Fcollabsablecard",
+        "component": "FCollapsableCard",
         "fieldOptions": {
             "props": {
                 "title": "General: Jobname, Queue and Condo",
@@ -13,7 +13,7 @@
                 "component": "div",
                 "children": [
                     {
-                        "component": "Finput",
+                        "component": "FInput",
                         "model": "jobname",
                         "fieldOptions": {
                             "props": {
@@ -24,7 +24,7 @@
                         }
                     },
                     {
-                        "component": "Fradiobuttongroup",
+                        "component": "FRadioButtonGroup",
                         "model": "partition",
                         "fieldOptions": {
                             "props": {
@@ -40,7 +40,7 @@
         ]
     },
     {
-        "component": "Fcollabsablecard",
+        "component": "FCollapsableCard",
         "fieldOptions": {
             "props": {
                 "title": "Resources: Nodes, cores and memory",
@@ -53,7 +53,7 @@
                 "component": "div",
                 "children": [
                     {
-                        "component": "Fnumberinputgroup",
+                        "component": "FNumberInputGroup",
                         "model": "walltime",
                         "fieldOptions": {
                             "props": {
@@ -65,7 +65,7 @@
                         }
                     },
                     {
-                        "component": "Fnumberinput",
+                        "component": "FNumberInput",
                         "model": "nnodes",
                         "fieldOptions": {
                             "props": {
@@ -77,7 +77,7 @@
                         }
                     },
                     {
-                        "component": "Fnumberinput",
+                        "component": "FNumberInput",
                         "model": "ncpus",
                         "fieldOptions": {
                             "props": {
@@ -89,7 +89,7 @@
                         }
                     },
                     {
-                        "component": "Fnumberinput",
+                        "component": "FNumberInput",
                         "model": "memory",
                         "fieldOptions": {
                             "props": {
@@ -105,7 +105,7 @@
         ]
     },
     {
-        "component": "Fcollabsablecard",
+        "component": "FCollapsableCard",
         "fieldOptions": {
             "props": {
                 "title": "Logs and Notifications",
@@ -118,7 +118,7 @@
                 "component": "div",
                 "children": [
                     {
-                        "component": "Finput",
+                        "component": "FInput",
                         "model": "output",
                         "fieldOptions": {
                         "props": {
@@ -141,7 +141,7 @@
                         }
                     },
                     {
-                        "component": "Finput",
+                        "component": "FInput",
                         "model": "email",
                         "fieldOptions": {
                         "props": {

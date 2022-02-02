@@ -1,20 +1,20 @@
 // plugins/bl-components.js
 
 import Vue from 'vue'
-import Finput from '~/components/baseforms/Finput.vue'
-import Fradiobuttongroup from '~/components/baseforms/Fradiobuttongroup.vue'
-import Fcheckboxbuttongroup from '~/components/baseforms/Fcheckboxbuttongroup.vue'
-import Fnumberinput from '~/components/baseforms/Fnumberinput.vue'
-import Fnumberinputgroup from '~/components/baseforms/Fnumberinputgroup.vue'
-import Fcollabsablecard from '~/components/baseforms/Fcollabsablecard.vue'
+import FInput from '~/components/baseforms/FInput.vue'
+import FRadioButtonGroup from '~/components/baseforms/FRadioButtonGroup.vue'
+import FCheckBoxButtonGroup from '~/components/baseforms/FCheckBoxButtonGroup.vue'
+import FNumberInput from '~/components/baseforms/FNumberInput.vue'
+import FNumberInputGroup from '~/components/baseforms/FNumberInputGroup.vue'
+import FCollapsableCard from '~/components/baseforms/FCollapsableCard.vue'
 
 const components = {
-  Finput,
-  Fradiobuttongroup,
-  Fcheckboxbuttongroup,
-  Fnumberinput,
-  Fnumberinputgroup,
-  Fcollabsablecard,
+  FInput,
+  FRadioButtonGroup,
+  FCheckBoxButtonGroup,
+  FNumberInput,
+  FNumberInputGroup,
+  FCollapsableCard,
 }
 
 Object.entries(components).forEach(([name, component]) => {
