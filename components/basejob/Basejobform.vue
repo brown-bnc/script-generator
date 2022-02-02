@@ -22,7 +22,7 @@ export default {
     sbatchIndex: {
       type: Number,
       required: true,
-      validator: (value) => [0, 10].includes(value),
+      validator: (value) => [0, 1].includes(value),
     },
   },
   data() {

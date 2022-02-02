@@ -19,7 +19,20 @@
 </template>
 <script>
 export default {
-  props: ['title', 'index', 'openidx'],
+  props: {
+    title: {
+      type: String,
+      required: true,
+    },
+    index: {
+      type: Number,
+      required: true,
+    },
+    openidx: {
+      type: Number,
+      required: true,
+    },
+  },
   data() {
     return {
       isOpen: this.openidx,

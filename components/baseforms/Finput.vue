@@ -16,7 +16,37 @@
 
 <script>
 export default {
-  props: ['value', 'label', 'info', 'placeholder', 'type', 'icon'],
+  props: {
+    value: {
+      type: String,
+      required: true,
+    },
+    label: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    info: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    placeholder: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    type: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    icon: {
+      type: String,
+      required: false,
+      default: null,
+    },
+  },
   computed: {
     optionalProps() {
       const optProps = {}

@@ -18,6 +18,23 @@
 
 <script>
 export default {
-  props: ['value', 'label', 'info', 'range'],
+  props: {
+    value: {
+      type: Number,
+      required: true,
+    },
+    label: {
+      type: String,
+      required: true,
+    },
+    info: {
+      type: String,
+      required: true,
+    },
+    range: {
+      type: Array,
+      required: true,
+    },
+  },
 }
 </script>

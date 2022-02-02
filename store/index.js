@@ -11,7 +11,7 @@ export const state = () => ({
       memory: 16,
       output: '/gpfs/scratch/%u/xnat2bids-%j.out',
       emailevents: [],
-      email: null,
+      email: '',
     },
     {
       jobname: 'bids-validator',
@@ -22,7 +22,7 @@ export const state = () => ({
       memory: 4,
       output: '/gpfs/scratch/%u/bids-validator-%j.out',
       emailevents: [],
-      email: null,
+      email: '',
     },
   ],
 })

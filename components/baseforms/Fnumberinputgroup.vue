@@ -20,7 +20,24 @@
 
 <script>
 export default {
-  props: ['value', 'label', 'info', 'ranges'],
+  props: {
+    value: {
+      type: Array,
+      required: true,
+    },
+    label: {
+      type: String,
+      required: true,
+    },
+    info: {
+      type: String,
+      required: true,
+    },
+    ranges: {
+      type: Array,
+      required: true,
+    },
+  },
   methods: {
     updateValue(index, val) {
       this.value[index] = val

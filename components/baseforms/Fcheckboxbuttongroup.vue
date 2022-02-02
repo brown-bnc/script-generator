@@ -1,5 +1,11 @@
 <template>
-  <b-field label="Email Event">
+  <b-field>
+    <template v-if="label" #label>
+      {{ label }}
+      <b-tooltip type="is-light" :label="info">
+        <b-icon size="is-small" pack="fa" icon="info-circle"></b-icon>
+      </b-tooltip>
+    </template>
     <div v-for="(item, index) in items" :key="index">
       <b-checkbox-button
         :value="value"
@@ -15,23 +21,36 @@
 
 <script>
 export default {
-  props: ['value', 'label', 'info', 'items'],
+  props: {
+    value: {
+      type: Array,
+      required: true,
+    },
+    label: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    info: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    items: {
+      type: Array,
+      required: true,
+    },
+  },
   methods: {
     updateValue(index) {
       const i = this.value.indexOf(this.items[index])
-      console.log(i)
-      console.log(index)
       if (i > -1) {
-        console.log('splicing')
         this.$emit(
           'input',
           this.value.filter((item) => item !== this.items[index])
         )
-        console.log(this.value)
       } else {
-        console.log('concat')
         this.$emit('input', this.value.concat(this.items[index]))
-        console.log(this.value)
       }
     },
   },
