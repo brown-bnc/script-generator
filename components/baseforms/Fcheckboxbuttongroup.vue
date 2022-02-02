@@ -3,9 +3,9 @@
     <div v-for="(item, index) in items" :key="index">
       <b-checkbox-button
         :value="value"
-        @input="updateValue(index)"
         :native-value="item"
         type="is-link"
+        @input="updateValue(index)"
       >
         <span>{{ item }}</span>
       </b-checkbox-button>

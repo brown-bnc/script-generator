@@ -9,9 +9,9 @@
     <div v-for="(item, index) in items" :key="index">
       <b-radio-button
         :value="value"
-        @input="$emit('input', $event)"
         :native-value="item"
         type="is-link"
+        @input="$emit('input', $event)"
       >
         <span>{{ item }}</span>
       </b-radio-button>

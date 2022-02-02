@@ -8,10 +8,10 @@
     </template>
     <b-numberinput
       :value="value"
-      @input="$emit('input', $event)"
       :min="range[0]"
       :max="range[1]"
       class="mr-2"
+      @input="$emit('input', $event)"
     ></b-numberinput>
   </b-field>
 </template>

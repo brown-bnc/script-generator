@@ -9,10 +9,10 @@
     <div v-for="(val, index) in value" :key="index" class="content">
       <b-numberinput
         :value="value[index]"
-        @input="updateValue(index, $event)"
         :min="ranges[index][0]"
         :max="ranges[index][1]"
         class="mr-2"
+        @input="updateValue(index, $event)"
       ></b-numberinput>
     </div>
   </b-field>

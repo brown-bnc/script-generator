@@ -10,7 +10,7 @@
     </div>
     <div class="panel-block custom-pad">
       <prism :key="sbatchCodeKey" lang="bash">
-        <Basejobfragment sbatch-index="1" />
+        <Basejobfragment :sbatch-index="1" />
         <Bidsvalidatorfragment />
       </prism>
     </div>

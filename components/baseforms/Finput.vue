@@ -20,11 +20,9 @@ export default {
   computed: {
     optionalProps() {
       const optProps = {}
-      console.log(this.placeholder)
       this.placeholder && (optProps.placeholder = this.placeholder)
       this.type && (optProps.type = this.type)
       this.icon && (optProps.icon = this.icon)
-      console.log(optProps)
       return optProps
     },
   },
