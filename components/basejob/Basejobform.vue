@@ -10,7 +10,7 @@
 
 <script>
 import { mapFields } from 'vuex-map-fields'
-import VueFormJsonSchema from 'vue-form-json-schema/dist/vue-form-json-schema.esm.js'
+import VueFormJsonSchema from 'vue-form-json-schema'
 import baseJobUISchema from '~/data/basejob_ui_schema.json'
 import baseJobSchema from '~/data/basejob_schema.json'
 
