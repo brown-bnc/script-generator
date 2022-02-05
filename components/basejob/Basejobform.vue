@@ -31,13 +31,11 @@ export default {
       isOpen: 0,
       state: {},
       schema: baseJobSchema,
+      uiSchema: baseJobUISchema,
     }
   },
   computed: {
     ...mapFields({ sbatchBaseVals: 'sbatch' }),
-    uiSchema() {
-      return baseJobUISchema
-    },
   },
 }
 </script>
