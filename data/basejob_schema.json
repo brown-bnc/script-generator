@@ -5,28 +5,64 @@
         "type": "string"
       },
       "partition": {
-        "type": "string"
+        "type": "string",
+        "default": "BATCH"
       },
       "walltime": {
-        "type": "array"
+        "type": "array",
+        "default": [0,30,0],
+        "items": [
+            {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 24
+            },
+            {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 60
+            },
+            {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 60
+            }
+          ]
       },
       "nnodes": {
-        "type": "array"
+        "type": "integer",
+        "default": 1,
+        "minimum": 1,
+        "maximum": 10
       },
       "ncpus": {
-        "type": "array"
+        "type": "integer",
+        "default": 1,
+        "minimum": 1,
+        "maximum": 100
       },
       "memory": {
-        "type": "array"
+        "type": "integer",
+        "default": 4,
+        "minimum": 1,
+        "maximum": 1000
       },
       "output": {
-        "type": "string"
+        "type": "string",
+        "default": "/gpfs/scratch/%u/{jobname}-%j.out"
       },
       "emailevents": {
-        "type": "array"
+        "type": "array",
+        "default": [],
+        "maxItems": 4,
+        "uniqueItems": true        
       },
       "email": {
-        "type": "string"
+        "type": "string",
+        "format": "email",
+        "default": ""
       }
-    }
+    },
+    "required": ["jobname"]
+
 }
