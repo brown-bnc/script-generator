@@ -63,6 +63,9 @@
         "default": ""
       }
     },
-    "required": ["jobname"]
+    "required": ["jobname"],
+    "additionalProperties": {
+        "not": true
+    }
 
 }
