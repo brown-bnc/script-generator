@@ -2,14 +2,12 @@
   <b-field>
     <template v-if="label" #label>
       {{ label }}
-      <b-tooltip type="is-light" :label="info">
-        <b-icon size="is-small" pack="fa" icon="info-circle"></b-icon>
-      </b-tooltip>
+      <FInfoToolTip :info="info" />
     </template>
     <b-input
       v-bind="optionalProps"
       :value="value"
-      @input="$emit('input', $event)"
+      @input="$emit('f-input', $event)"
     ></b-input>
   </b-field>
 </template>

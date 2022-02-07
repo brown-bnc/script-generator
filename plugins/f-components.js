@@ -2,6 +2,7 @@
 
 import Vue from 'vue'
 import FInput from '~/components/baseforms/FInput.vue'
+import FInfoToolTip from '~/components/baseforms/FInfoToolTip.vue'
 import FRadioButtonGroup from '~/components/baseforms/FRadioButtonGroup.vue'
 import FCheckBoxButtonGroup from '~/components/baseforms/FCheckBoxButtonGroup.vue'
 import FNumberInput from '~/components/baseforms/FNumberInput.vue'
@@ -10,6 +11,7 @@ import FCollapsableCard from '~/components/baseforms/FCollapsableCard.vue'
 
 const components = {
   FInput,
+  FInfoToolTip,
   FRadioButtonGroup,
   FCheckBoxButtonGroup,
   FNumberInput,

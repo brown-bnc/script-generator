@@ -20,7 +20,7 @@
                                 "label": "Slurm Job Name",
                                 "info": "String identifying your job in the SLURM queue"
                             },
-                            "on": "input"
+                            "on": "f-input"
                         }
                     },
                     {
@@ -32,7 +32,7 @@
                                 "info": "Partition Help",
                                 "items": ["BATCH", "GPU"]
                             },
-                            "on": "input"
+                            "on": "f-input"
                         }
                     }
                 ]
@@ -61,7 +61,7 @@
                             "info": "Wall-time help",
                             "ranges": [[0, 100], [0, 60], [0, 60]]
                         },
-                        "on": "input"
+                        "on": "f-input"
                         }
                     },
                     {
@@ -73,7 +73,7 @@
                             "info": "NNodes help",
                             "range": [0, 10]
                         },
-                        "on": "input"
+                        "on": "f-input"
                         }
                     },
                     {
@@ -85,7 +85,7 @@
                             "info": "NCores",
                             "range": [0, 100]
                         },
-                        "on": "input"
+                        "on": "f-input"
                         }
                     },
                     {
@@ -97,7 +97,7 @@
                             "info": "Memory help",
                             "range": [0, 1000]
                         },
-                        "on": "input"
+                        "on": "f-input"
                         }
                     }
                 ]
@@ -125,7 +125,7 @@
                             "label": "Output Log",
                             "info": "Output Log help"
                         },
-                        "on": "input"
+                        "on": "finput"
                         }
                     },
                     {
@@ -137,7 +137,7 @@
                             "info": "Email Events Help",
                             "items": ["BEGIN", "END", "REQUEUE", "FAIL"]
                         },
-                        "on": "input"
+                        "on": "f-input"
                         }
                     },
                     {
@@ -149,7 +149,7 @@
                             "icon": "email",
                             "placeholder": "Email"
                         },
-                        "on": "input"
+                        "on": "f-input"
                         }
                     } 
                 ]

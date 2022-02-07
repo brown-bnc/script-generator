@@ -2,9 +2,7 @@
   <b-field grouped group-multiline>
     <template #label>
       {{ label }}
-      <b-tooltip type="is-light" :label="info">
-        <b-icon size="is-small" pack="fa" icon="info-circle"></b-icon>
-      </b-tooltip>
+      <FInfoToolTip :info="info" />
     </template>
     <div v-for="(val, index) in value" :key="index" class="content">
       <b-numberinput
@@ -41,7 +39,7 @@ export default {
   methods: {
     updateValue(index, val) {
       this.value[index] = val
-      this.$emit('input', this.value)
+      this.$emit('f-input', this.value)
     },
   },
 }
