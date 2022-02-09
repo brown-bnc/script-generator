@@ -17,7 +17,7 @@
           >
             <strong class="level-left">SBATCH Configuration</strong>
           </div>
-          <Basejobform sbatch-index="1" />
+          <Basejobform :sbatch-index="1" />
         </b-collapse>
         <b-collapse
           :key="2"

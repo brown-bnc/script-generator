@@ -47,11 +47,11 @@ export default {
     },
     timeString() {
       return (
-        String(this.sbatch[this.sbatchIndex].hours) +
+        String(this.sbatch[this.sbatchIndex].walltime[0]) +
         ':' +
-        String(this.sbatch[this.sbatchIndex].minutes).padStart(2, '0') +
+        String(this.sbatch[this.sbatchIndex].walltime[1]).padStart(2, '0') +
         ':' +
-        String(this.sbatch[this.sbatchIndex].seconds).padStart(2, '0')
+        String(this.sbatch[this.sbatchIndex].walltime[2]).padStart(2, '0')
       )
     },
     emailEventString() {

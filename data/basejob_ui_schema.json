@@ -1,0 +1,159 @@
+[
+    {
+        "component": "FCollapsableCard",
+        "fieldOptions": {
+            "props": {
+                "title": "General: Jobname, Queue and Condo",
+                "index": 0,
+                "openidx": 0
+            }
+        },
+        "children": [
+            {
+                "component": "div",
+                "children": [
+                    {
+                        "component": "FInput",
+                        "model": "jobname",
+                        "fieldOptions": {
+                            "props": {
+                                "label": "Slurm Job Name",
+                                "info": "String identifying your job in the SLURM queue"
+                            },
+                            "on": "f-input"
+                        }
+                    },
+                    {
+                        "component": "FRadioButtonGroup",
+                        "model": "partition",
+                        "fieldOptions": {
+                            "props": {
+                                "label": "Partition",
+                                "info": "Partition Help",
+                                "items": ["BATCH", "GPU"]
+                            },
+                            "on": "f-input"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "component": "FCollapsableCard",
+        "fieldOptions": {
+            "props": {
+                "title": "Resources: Nodes, cores and memory",
+                "index": 1,
+                "openidx": 0
+            }
+        },
+        "children": [
+            {
+                "component": "div",
+                "children": [
+                    {
+                        "component": "FNumberInputGroup",
+                        "model": "walltime",
+                        "fieldOptions": {
+                            "props": {
+                            "label": "Wall-time (HH:MM:SS)",
+                            "info": "Wall-time help",
+                            "ranges": [[0, 100], [0, 60], [0, 60]]
+                        },
+                        "on": "f-input"
+                        }
+                    },
+                    {
+                        "component": "FNumberInput",
+                        "model": "nnodes",
+                        "fieldOptions": {
+                            "props": {
+                            "label": "Number of nodes",
+                            "info": "NNodes help",
+                            "range": [0, 10]
+                        },
+                        "on": "f-input"
+                        }
+                    },
+                    {
+                        "component": "FNumberInput",
+                        "model": "ncpus",
+                        "fieldOptions": {
+                            "props": {
+                            "label": "Number of cores per node",
+                            "info": "NCores",
+                            "range": [0, 100]
+                        },
+                        "on": "f-input"
+                        }
+                    },
+                    {
+                        "component": "FNumberInput",
+                        "model": "memory",
+                        "fieldOptions": {
+                            "props": {
+                            "label": "RAM per node (GB)",
+                            "info": "Memory help",
+                            "range": [0, 1000]
+                        },
+                        "on": "f-input"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "component": "FCollapsableCard",
+        "fieldOptions": {
+            "props": {
+                "title": "Logs and Notifications",
+                "index": 2,
+                "openidx": 0
+            }
+        },
+        "children": [
+            {
+                "component": "div",
+                "children": [
+                    {
+                        "component": "FInput",
+                        "model": "output",
+                        "fieldOptions": {
+                        "props": {
+                            "label": "Output Log",
+                            "info": "Output Log help"
+                        },
+                        "on": "f-input"
+                        }
+                    },
+                    {
+                        "component": "FCheckBoxButtonGroup",
+                        "model": "emailevents",
+                        "fieldOptions": {
+                        "props": {
+                            "label": "Email Events",
+                            "info": "Email Events Help",
+                            "items": ["BEGIN", "END", "REQUEUE", "FAIL"]
+                        },
+                        "on": "f-input"
+                        }
+                    },
+                    {
+                        "component": "FInput",
+                        "model": "email",
+                        "fieldOptions": {
+                        "props": {
+                            "type": "email",
+                            "icon": "email",
+                            "placeholder": "Email"
+                        },
+                        "on": "f-input"
+                        }
+                    } 
+                ]
+            }
+        ]
+    }
+]
