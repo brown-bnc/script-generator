@@ -2,9 +2,7 @@
   <b-field>
     <template v-if="label" #label>
       {{ label }}
-      <b-tooltip type="is-light" :label="info">
-        <b-icon size="is-small" pack="fa" icon="info-circle"></b-icon>
-      </b-tooltip>
+      <FInfoToolTip :info="info" />
     </template>
     <div v-for="(item, index) in items" :key="index">
       <b-checkbox-button
