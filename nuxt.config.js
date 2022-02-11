@@ -22,11 +22,10 @@ export default {
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
-    '@brown-ccv/disco-styles',
+    '@/assets/main.scss',
     '@fortawesome/fontawesome-free/scss/fontawesome.scss',
     '@fortawesome/fontawesome-free/scss/solid.scss',
   ],
-
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     { src: '~/plugins/prism', mode: 'client' },
@@ -46,8 +45,8 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
+    ['nuxt-buefy', { css: false }],
     [
-      'nuxt-buefy',
       'nuxt-highlightjs',
       {
         style: 'monokai-sublime',

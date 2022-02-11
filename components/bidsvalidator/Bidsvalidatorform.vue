@@ -112,11 +112,3 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.card-header {
-  background-color: rgba(89, 203, 232, 0.3);
-}
-.card-content-gray {
-  background-color: rgba(89, 203, 232, 0.3);
-}
-</style>
