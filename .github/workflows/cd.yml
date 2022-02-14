@@ -24,9 +24,7 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Install dependencies
-        run: |
-          npm config set "//npm.pkg.github.com/:_authToken" ${{ secrets.GH_TOKEN_DISCO }}
-          yarn install
+        run: yarn
 
       - name: Generate
         run: yarn run generate
