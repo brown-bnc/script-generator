@@ -26,10 +26,7 @@ jobs:
         run: yarn --frozen-lockfile
       
       - name: Generate
-        run: yarn run generate
-
-      - name: Run linter
-        run: yarn lint 
+        run: yarn run generate 
 
       - name: Firebase Deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
