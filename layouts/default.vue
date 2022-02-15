@@ -63,7 +63,7 @@ html {
   min-height: 100%;
 }
 .v-application {
-  background-color: rgba(89, 203, 232, 0.1);
+  background-color: var(--color-blue-lighter);
   min-height: 100vh;
   margin-bottom: -50px;
 }

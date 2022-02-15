@@ -50,6 +50,6 @@ export default {
   margin-top: 50px;
   padding-top: 0;
   padding-bottom: 30px;
-  background-color: rgba(89, 203, 232, 0);
+  background-color: transparent;
 }
 </style>

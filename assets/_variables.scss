@@ -1,0 +1,44 @@
+// Colors
+
+//variables
+:root{
+    --color-blue-light: rgba(89, 203, 232, 0.3);
+    --color-blue-lighter: rgba(89, 203, 232, 0.1);
+}
+
+//overrides
+$primary: hsl(42, 16%, 76%);
+$info: hsl(192, 76%, 63%);
+$link: hsl(208, 100%, 22%);
+$success: hsl(171, 100%, 35%);
+$warning: hsl(44, 100%, 59%);
+$danger: hsl(0, 96%, 38%);
+
+
+// Invert colors
+$primary-invert: findcolorinvert($primary);
+$primary-light: findlightcolor($primary);
+$primary-dark: finddarkcolor($primary);
+$info-invert: findcolorinvert($info);
+$info-light: findlightcolor($info);
+$info-dark: finddarkcolor($info);
+$success-invert: findcolorinvert($success);
+$success-light: findlightcolor($success);
+$success-dark: finddarkcolor($success);
+$warning-invert: findcolorinvert($warning);
+$warning-light: findlightcolor($warning);
+$warning-dark: finddarkcolor($warning);
+$danger-invert: findcolorinvert($danger);
+$danger-light: findlightcolor($danger);
+$danger-dark: finddarkcolor($danger);
+$light-invert: findcolorinvert($danger);
+$dark-invert: findcolorinvert($danger);
+
+
+// style overrides
+
+$card-header-background-color: rgba(89, 203, 232, 0.3);
+
+
+
+

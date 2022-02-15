@@ -1,12 +1,5 @@
 <template>
   <div>
-    <DHero
-      v-if="false"
-      :title="title"
-      :subtitle="subtitle"
-      variant="is-link"
-      :full-height="false"
-    />
     <section class="hero is-link">
       <div class="hero-body">
         <div class="container">
@@ -56,13 +49,9 @@
 </template>
 
 <script>
-import { DHero } from '@brown-ccv/disco-vue-components'
 import { mapFields } from 'vuex-map-fields'
 
 export default {
-  components: {
-    DHero,
-  },
   computed: {
     ...mapFields(['navigation.active_nav']),
   },
