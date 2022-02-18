@@ -1,5 +1,11 @@
 <template>
   <div>
+    <vue-form-json-schema
+      v-model="xnat2bids2"
+      :schema="schema"
+      :ui-schema="uiSchema"
+    ></vue-form-json-schema>
+    {{ xnat2bids2 }}
     <section>
       <b-collapse
         :key="0"
@@ -157,11 +163,19 @@
 <script>
 import { mapMutations } from 'vuex'
 import { mapFields, mapMultiRowFields } from 'vuex-map-fields'
+import VueFormJsonSchema from 'vue-form-json-schema'
+import Xnat2BidsUISchema from '~/data/xnat2bids_ui_schema.json'
+import Xnat2BidsSchema from '~/data/basejob_schema.json'
 
 export default {
+  components: {
+    'vue-form-json-schema': VueFormJsonSchema,
+  },
   data() {
     return {
       isOpen: 0,
+      schema: Xnat2BidsSchema,
+      uiSchema: Xnat2BidsUISchema,
     }
   },
   computed: {
@@ -176,6 +190,7 @@ export default {
       'xnat2bids.overwrite',
       'xnat2bids.cleanup',
       'xnat2bids.verbose',
+      'xnat2bids2',
     ]),
     ...mapMultiRowFields(['xnat2bids.sessions']),
   },

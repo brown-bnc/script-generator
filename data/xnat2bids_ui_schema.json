@@ -1,0 +1,44 @@
+[
+    {
+        "component": "FCollapsableCard",
+        "fieldOptions": {
+            "props": {
+                "title": "General: Version and paths",
+                "index": 0,
+                "openidx": 0
+            }
+        },
+        "children": [
+            {
+                "component": "div",
+                "children": [
+                    {
+                        "component": "FInput",
+                        "model": "version",
+                        "fieldOptions": {
+                            "props": {
+                                "label": "Version of xnat-tools",
+                                "info": "Release Version of xnat-tools library, which must be available as a singularity image in Oscar under /gpfs/data/bnc/simgs/brown-bnc"
+                            },
+                            "on": "f-input"
+                        }
+                    },
+                    {
+                        "component": "FInput",
+                        "model": "output_path",
+                        "fieldOptions": {
+                            "props": {
+                                "label": "Output Path",
+                                "info": "Root directory for output BIDS dataset",
+                                "placeholder":"/gpfs/data/bnc/shared/bids-export/${USER}",
+                                "fieldType": "is-warning",
+                                "fieldMessage": "Path required"
+                            },
+                            "on": "f-input"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+]
