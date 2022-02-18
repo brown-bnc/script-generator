@@ -40,5 +40,26 @@
                 ]
             }
         ]
+    },
+    {
+        "component": "FCollapsableCard",
+        "fieldOptions": {
+            "props": {
+                "title": "MRI Sessions",
+                "index": 1,
+                "openidx": 0
+            }
+        },
+        "children": [
+            {
+                "component": "div",
+                "children": [
+                    {
+                        "component": "Xnat2BidsSessions",
+                        "model": "sessions"
+                    }
+                ]
+            }
+        ]
     }
 ]

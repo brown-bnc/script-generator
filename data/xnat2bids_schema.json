@@ -3,6 +3,12 @@
     "properties": {
       "version": {
         "type": "string"
+      },
+      "output_path": {
+        "type": "string"
+      },
+      "sessions":{
+          "type": "array"
       }
     }
 }
