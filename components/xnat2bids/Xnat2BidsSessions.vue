@@ -6,7 +6,11 @@
           <p class="control">
             <span class="button is-static is-link">Participant ID</span>
           </p>
-          <b-input v-model="session.participant_id" placeholder="135" />
+          <b-input
+            :value="session.participant_id"
+            placeholder="135"
+            @input="updateParticipantID(index, $event)"
+          />
         </b-field>
         <b-field type="is-warning" message="Required">
           <p class="control">
@@ -62,6 +66,10 @@ export default {
       addSession: 'xnat2bids2/addSession',
       removeSession: 'xnat2bids2/popSession',
     }),
+    updateParticipantID(index, val) {
+      this.value[index].participant_id = val
+      this.$emit('f-sessions', this.value)
+    },
   },
 }
 </script>

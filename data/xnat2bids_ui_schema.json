@@ -56,7 +56,10 @@
                 "children": [
                     {
                         "component": "Xnat2BidsSessions",
-                        "model": "sessions"
+                        "model": "sessions",
+                        "fieldOptions": {
+                            "on": "f-sessions"
+                        }
                     }
                 ]
             }

@@ -198,6 +198,8 @@ export default {
     ...mapMutations({
       addSession: 'xnat2bids/addSession',
       removeSession: 'xnat2bids/popSession',
+      addSession2: 'xnat2bids2/addSession',
+      removeSession2: 'xnat2bids2/popSession',
     }),
   },
 }
