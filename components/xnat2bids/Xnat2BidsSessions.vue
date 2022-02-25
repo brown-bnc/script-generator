@@ -9,14 +9,18 @@
           <b-input
             :value="session.participant_id"
             placeholder="135"
-            @input="updateParticipantID(index, $event)"
+            @input="updateValue(index, 'participant_id', $event)"
           />
         </b-field>
         <b-field type="is-warning" message="Required">
           <p class="control">
             <span class="button is-static">XNAT ACCESSION #</span>
           </p>
-          <b-input v-model="session.xnat_id" placeholder="XNAT3_E00013" />
+          <b-input
+            v-model="session.xnat_id"
+            placeholder="XNAT3_E00013"
+            @input="updateValue(index, 'xnat_id', $event)"
+          />
         </b-field>
         <b-field label="Include series (empty= ALL series)">
           <b-taginput
@@ -25,6 +29,7 @@
             icon="label"
             placeholder="Add a series number"
             aria-close-label="Delete this tag"
+            @input="updateValue(index, 'i_series', $event)"
           >
           </b-taginput>
         </b-field>
@@ -35,6 +40,7 @@
             icon="label"
             placeholder="Add a series number"
             aria-close-label="Delete this tag"
+            @input="updateValue(index, 's_series', $event)"
           >
           </b-taginput>
         </b-field>
@@ -66,8 +72,8 @@ export default {
       addSession: 'xnat2bids/addSession',
       removeSession: 'xnat2bids/popSession',
     }),
-    updateParticipantID(index, val) {
-      this.value[index].participant_id = val
+    updateValue(index, key, val) {
+      this.value[index][key] = val
       this.$emit('f-sessions', this.value)
     },
   },
