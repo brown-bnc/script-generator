@@ -1,5 +1,5 @@
 <template>
-  <b-field>
+  <b-field v-bind="fieldProps">
     <template v-if="label" #label>
       {{ label }}
       <FInfoToolTip :info="info" />
@@ -44,6 +44,16 @@ export default {
       required: false,
       default: null,
     },
+    fieldType: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    fieldMessage: {
+      type: String,
+      required: false,
+      default: null,
+    },
   },
   computed: {
     optionalProps() {
@@ -51,6 +61,12 @@ export default {
       this.placeholder && (optProps.placeholder = this.placeholder)
       this.type && (optProps.type = this.type)
       this.icon && (optProps.icon = this.icon)
+      return optProps
+    },
+    fieldProps() {
+      const optProps = {}
+      this.fieldType && (optProps.type = this.fieldType)
+      this.fieldMessage && (optProps.message = this.fieldMessage)
       return optProps
     },
   },

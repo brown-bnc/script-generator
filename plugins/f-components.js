@@ -8,6 +8,8 @@ import FCheckBoxButtonGroup from '~/components/baseforms/FCheckBoxButtonGroup.vu
 import FNumberInput from '~/components/baseforms/FNumberInput.vue'
 import FNumberInputGroup from '~/components/baseforms/FNumberInputGroup.vue'
 import FCollapsableCard from '~/components/baseforms/FCollapsableCard.vue'
+import Xnat2BidsSessions from '~/components/xnat2bids/Xnat2BidsSessions.vue'
+import Xnat2BidsBidsmap from '~/components/xnat2bids/Xnat2BidsBidsmap.vue'
 
 const components = {
   FInput,
@@ -17,6 +19,8 @@ const components = {
   FNumberInput,
   FNumberInputGroup,
   FCollapsableCard,
+  Xnat2BidsSessions,
+  Xnat2BidsBidsmap,
 }
 
 Object.entries(components).forEach(([name, component]) => {
