@@ -1,7 +1,7 @@
 <template>
   <div>
     <vue-form-json-schema
-      v-model="xnat2bids2"
+      v-model="xnat2bids"
       :schema="schema"
       :ui-schema="uiSchema"
     ></vue-form-json-schema>
@@ -9,8 +9,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
-import { mapFields, mapMultiRowFields } from 'vuex-map-fields'
+import { mapFields } from 'vuex-map-fields'
 import VueFormJsonSchema from 'vue-form-json-schema'
 import Xnat2BidsUISchema from '~/data/xnat2bids_ui_schema.json'
 import Xnat2BidsSchema from '~/data/basejob_schema.json'
@@ -27,28 +26,7 @@ export default {
     }
   },
   computed: {
-    ...mapFields([
-      'xnat2bids.version',
-      'xnat2bids.output_path',
-      'xnat2bids.needs_bidsmap',
-      'xnat2bids.bidsmap_dir',
-      'xnat2bids.bidsmap_file',
-      'xnat2bids.i_series',
-      'xnat2bids.s_series',
-      'xnat2bids.overwrite',
-      'xnat2bids.cleanup',
-      'xnat2bids.verbose',
-      'xnat2bids2',
-    ]),
-    ...mapMultiRowFields(['xnat2bids.sessions']),
-  },
-  methods: {
-    ...mapMutations({
-      addSession: 'xnat2bids/addSession',
-      removeSession: 'xnat2bids/popSession',
-      addSession2: 'xnat2bids2/addSession',
-      removeSession2: 'xnat2bids2/popSession',
-    }),
+    ...mapFields(['xnat2bids']),
   },
 }
 </script>
