@@ -11,6 +11,14 @@ export const state = () => ({
       s_series: [7, 15, 16, 17, 18],
     },
   ],
+  bidsmap: {
+    required: false,
+    dir: '/gpfs/data/bnc/sanes_sadlum/preprocessing/xnat2bids',
+    file: 'bidsmap.json',
+  },
+  overwrite: false,
+  cleanup: false,
+  verbose: false,
 })
 
 export const mutations = {

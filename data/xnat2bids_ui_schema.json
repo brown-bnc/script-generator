@@ -1,68 +1,194 @@
 [
-    {
-        "component": "FCollapsableCard",
-        "fieldOptions": {
-            "props": {
-                "title": "General: Version and paths",
-                "index": 0,
-                "openidx": 0
-            }
-        },
-        "children": [
-            {
-                "component": "div",
-                "children": [
-                    {
-                        "component": "FInput",
-                        "model": "version",
-                        "fieldOptions": {
-                            "props": {
-                                "label": "Version of xnat-tools",
-                                "info": "Release Version of xnat-tools library, which must be available as a singularity image in Oscar under /gpfs/data/bnc/simgs/brown-bnc"
-                            },
-                            "on": "f-input"
-                        }
-                    },
-                    {
-                        "component": "FInput",
-                        "model": "output_path",
-                        "fieldOptions": {
-                            "props": {
-                                "label": "Output Path",
-                                "info": "Root directory for output BIDS dataset",
-                                "placeholder":"/gpfs/data/bnc/shared/bids-export/${USER}",
-                                "fieldType": "is-warning",
-                                "fieldMessage": "Path required"
-                            },
-                            "on": "f-input"
-                        }
-                    }
-                ]
-            }
-        ]
+  {
+    "component": "FCollapsableCard",
+    "fieldOptions": {
+      "props": {
+        "title": "General: Version and paths",
+        "index": 0,
+        "openidx": 0
+      }
     },
-    {
-        "component": "FCollapsableCard",
-        "fieldOptions": {
-            "props": {
-                "title": "MRI Sessions",
-                "index": 1,
-                "openidx": 0
-            }
-        },
+    "children": [
+      {
+        "component": "div",
         "children": [
-            {
-                "component": "div",
-                "children": [
-                    {
-                        "component": "Xnat2BidsSessions",
-                        "model": "sessions",
-                        "fieldOptions": {
-                            "on": "f-sessions"
-                        }
-                    }
-                ]
+          {
+            "component": "FInput",
+            "model": "version",
+            "fieldOptions": {
+              "props": {
+                "label": "Version of xnat-tools",
+                "info": "Release Version of xnat-tools library, which must be available as a singularity image in Oscar under /gpfs/data/bnc/simgs/brown-bnc"
+              },
+              "on": "f-input"
             }
+          },
+          {
+            "component": "FInput",
+            "model": "output_path",
+            "fieldOptions": {
+              "props": {
+                "label": "Output Path",
+                "info": "Root directory for output BIDS dataset",
+                "placeholder":"/gpfs/data/bnc/shared/bids-export/${USER}",
+                "fieldType": "is-warning",
+                "fieldMessage": "Path required"
+              },
+              "on": "f-input"
+            }
+          }
         ]
-    }
+      }
+    ]
+  },
+  {
+    "component": "FCollapsableCard",
+    "fieldOptions": {
+      "props": {
+        "title": "MRI Sessions",
+        "index": 1,
+        "openidx": 0
+      }
+    },
+    "children": [
+      {
+        "component": "div",
+        "children": [
+          {
+            "component": "Xnat2BidsSessions",
+            "model": "sessions",
+            "fieldOptions": {
+              "on": "f-sessions"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "component": "FCollapsableCard",
+    "fieldOptions": {
+      "props": {
+        "title": "Other Flags",
+        "index": 2,
+        "openidx": 0
+      }
+    },
+    "children": [
+      {
+        "component": "div",
+        "children": [
+          {
+            "component": "b-field",
+            "children": [
+              {
+                "component": "b-switch",
+                "model": "overwrite",
+                "fieldOptions": {
+                  "type": "is-info",
+                  "on": "input"
+                },
+                "children":[
+                  {
+                    "component": "span",
+                    "fieldOptions": {
+                      "domProps": {
+                        "innerHTML": "Overwrite"
+                      }
+                    }
+                  },
+                  {
+                    "component": "FInfoToolTip",
+                    "fieldOptions":{
+                      "props":{
+                        "info": "Overwrite info"
+                      },
+                      "class":{
+                        "mx-2": "true"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          { 
+            "component": "b-field",
+            "children":[
+              {
+                "component": "b-switch",
+                "model": "verbose",
+                "fieldOptions": {
+                  "type": "is-info",
+                  "on": "input"
+                },
+                "children":[
+                  {
+                    "component": "span",
+                    "fieldOptions": {
+                      "domProps": {
+                        "innerHTML": "Verbose"
+                      }
+                    }
+                  },
+                  {
+                    "component": "FInfoToolTip",
+                    "fieldOptions":{
+                      "props":{
+                        "info": "Verbose info"
+                      },
+                      "class":{
+                        "mx-2": "true"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          { 
+            "component": "b-field",
+            "children":[
+              {
+                "component": "b-switch",
+                "model": "cleanup",
+                "fieldOptions": {
+                  "type": "is-info",
+                  "on": "input"
+                },
+                "children":[
+                  {
+                    "component": "span",
+                    "fieldOptions": {
+                      "domProps": {
+                        "innerHTML": "Clean Up"
+                      }
+                    }
+                  },
+                  {
+                    "component": "FInfoToolTip",
+                    "fieldOptions":{
+                      "props":{
+                        "info": "Clean up info"
+                      },
+                      "class":{
+                        "mx-2": "true"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "component": "Xnat2BidsBidsmap",
+            "model": "bidsmap",
+            "fieldOptions": {
+              "on": "f-bidsmap"
+            }
+          }
+        ]
+      }
+    ]
+  }
 ]

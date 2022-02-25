@@ -1,14 +1,29 @@
 {
-    "type": "object",
-    "properties": {
-      "version": {
-        "type": "string"
-      },
-      "output_path": {
-        "type": "string"
-      },
-      "sessions":{
-          "type": "array"
-      }
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "output_path": {
+      "type": "string"
+    },
+    "sessions":{
+      "type": "array"
+    },
+    "overwrite":{
+      "type": "bool"
+    },
+    "verbose":{
+      "type": "bool"
+    },
+    "cleanup":{
+      "type": "bool"
+    },
+    "needs_bidsmap":{
+      "type": "bool"
+    },
+    "bidsmap_dir":{
+      "type": "bool"
     }
+  }
 }
