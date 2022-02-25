@@ -63,8 +63,8 @@ export default {
   },
   methods: {
     ...mapMutations({
-      addSession: 'xnat2bids2/addSession',
-      removeSession: 'xnat2bids2/popSession',
+      addSession: 'xnat2bids/addSession',
+      removeSession: 'xnat2bids/popSession',
     }),
     updateParticipantID(index, val) {
       this.value[index].participant_id = val
