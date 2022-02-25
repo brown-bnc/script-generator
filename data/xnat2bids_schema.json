@@ -11,19 +11,21 @@
       "type": "array"
     },
     "overwrite":{
-      "type": "bool"
+      "type": "boolean"
     },
     "verbose":{
-      "type": "bool"
+      "type": "boolean"
     },
     "cleanup":{
-      "type": "bool"
+      "type": "boolean"
     },
-    "needs_bidsmap":{
-      "type": "bool"
-    },
-    "bidsmap_dir":{
-      "type": "bool"
+    "bidsmap":{
+      "type": "object",
+      "properties": {
+        "required": { "type": "boolean" },
+        "dir": { "type": "string" },
+        "file": { "type": "string" }
+      }
     }
   }
 }
