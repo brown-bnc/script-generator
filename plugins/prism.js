@@ -1,8 +1,8 @@
 /* eslint-disable no-template-curly-in-string */
 /* eslint-disable no-undef */
 import 'clipboard' // For the copy to clipboard plugin
-import Prism from 'prismjs'
 import Vue from 'vue'
+import Prism from 'prismjs'
 
 // Include language support: (optional)
 import 'prismjs/components/prism-bash'
