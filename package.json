@@ -31,7 +31,7 @@
     "clipboard": "^2.0.6",
     "core-js": "^3.6.5",
     "highlight.js": "^10.4.0",
-    "nuxt": "^2.14.6",
+    "nuxt": "^3.7.3",
     "nuxt-buefy": "^0.4.4",
     "nuxt-highlightjs": "^1.0.1",
     "prism-themes": "^1.5.0",
