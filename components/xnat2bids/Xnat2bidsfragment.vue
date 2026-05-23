@@ -11,7 +11,7 @@
     set +a
 
     # Version of xnat2bids being used
-    version={{ version }}
+    version={{ xnat2bids.version }}
     # Path to Singularity Image for xnat-tools (maintained by bnc)
     simg=/gpfs/data/bnc/simgs/brownbnc/xnat-tools-${version}.sif
     
@@ -55,11 +55,11 @@
     # without any -i all sequences will be processed
     # The -s passes a series to skip, 
 
-    <fragment v-if=needs_bidsmap>
+    <fragment v-if=xnat2bids.bidsmap.required>
     # The bidsmap file
-    # It needs to live under ${bidsmap_dir}/${bidsmap_file}
-    bidsmap_dir={{ bidsmap_dir }}
-    bidsmap_file={{ bidsmap_file }}
+    # It needs to live under ${xnat2bids.bidsmap.dir}/${xnat2bids.bidsmap.file}
+    bidsmap_dir={{ xnat2bids.bidsmap.dir }}
+    bidsmap_file={{ xnat2bids.bidsmap.file }}
     </fragment>
 
     {{ singularityString }}
@@ -73,47 +73,36 @@
 
 <script>
 import { Fragment } from 'vue-fragment'
-import { mapFields, mapMultiRowFields } from 'vuex-map-fields'
+import { mapFields } from 'vuex-map-fields'
 
 export default {
   components: {
     Fragment,
   },
   computed: {
-    ...mapFields([
-      'xnat2bids.version',
-      'xnat2bids.output_path',
-      'xnat2bids.needs_bidsmap',
-      'xnat2bids.bidsmap_dir',
-      'xnat2bids.bidsmap_file',
-      'xnat2bids.overwrite',
-      'xnat2bids.cleanup',
-      'xnat2bids.verbose',
-    ]),
-
-    ...mapMultiRowFields(['xnat2bids.sessions']),
+    ...mapFields(['xnat2bids']),
 
     output_path_validated() {
-      if (this.output_path) {
-        return this.output_path
+      if (this.xnat2bids.output_path) {
+        return this.xnat2bids.output_path
       } else {
         return 'MUST ENTER PATH IN FORM'
       }
     },
 
     sessionDictString() {
-      let key = this.sessions[0].participant_id
+      let key = this.xnat2bids.sessions[0].participant_id
       if (!key) {
         key = 'MUST ENTER IN FORM'
       }
-      let val = this.sessions[0].xnat_id
+      let val = this.xnat2bids.sessions[0].xnat_id
       if (!val) {
         val = 'MUST ENTER IN FORM'
       }
       const lines = [`declare -A sessions=([${key}]="${val}"`]
-      for (let i = 1; i < this.sessions.length; i++) {
-        key = this.sessions[i].participant_id
-        val = this.sessions[i].xnat_id
+      for (let i = 1; i < this.xnat2bids.sessions.length; i++) {
+        key = this.xnat2bids.sessions[i].participant_id
+        val = this.xnat2bids.sessions[i].xnat_id
         lines.push(`                       [${key}]="${val}"`)
       }
       const dictLine = lines.join(' \\\n')
@@ -121,22 +110,22 @@ export default {
     },
 
     seriesDictString() {
-      let key = this.sessions[0].participant_id
+      let key = this.xnat2bids.sessions[0].participant_id
       if (!key) {
         key = 'MUST ENTER IN FORM'
       }
-      let sval = this.sessions[0].s_series.join(' -s ')
+      let sval = this.xnat2bids.sessions[0].s_series.join(' -s ')
       sval = sval.length > 0 ? '-s ' + sval : sval
 
-      let ival = this.sessions[0].i_series.join(' -i ')
+      let ival = this.xnat2bids.sessions[0].i_series.join(' -i ')
       ival = ival.length > 0 ? ' -i ' + ival : ival
 
       const lines = [`declare -A series_map=([${key}]="${sval + ival}"`]
-      for (let i = 1; i < this.sessions.length; i++) {
-        key = this.sessions[i].participant_id
-        sval = this.sessions[i].s_series.join(' -s ')
+      for (let i = 1; i < this.xnat2bids.sessions.length; i++) {
+        key = this.xnat2bids.sessions[i].participant_id
+        sval = this.xnat2bids.sessions[i].s_series.join(' -s ')
         sval = sval.length > 0 ? '-s ' + sval : sval
-        ival = this.sessions[i].i_series.join(' -i ')
+        ival = this.xnat2bids.sessions[i].i_series.join(' -i ')
         ival = ival.length > 0 ? ' -i ' + ival : ival
         lines.push(`                         [${key}]="${sval + ival}"`)
       }
@@ -147,23 +136,23 @@ export default {
     singularityString() {
       const lines = ['singularity exec']
       lines.push(`    -B \${output_dir}`)
-      if (this.needs_bidsmap) {
+      if (this.xnat2bids.bidsmap.required) {
         lines.push(`    -B \${bidsmap_dir}:/bidsmaps:ro`)
       }
       lines.push(`    \${simg}`)
       lines.push(`    xnat2bids \${XNAT_SESSION} \${output_dir}`)
       lines.push(`    -u \${XNAT_USER}}`)
       lines.push(`    -p \${XNAT_PASSWORD}`)
-      if (this.needs_bidsmap) {
+      if (this.xnat2bids.bidsmap.required) {
         lines.push(`    -f /bidsmaps/\${bidsmap_file}`)
       }
-      if (this.overwrite) {
+      if (this.xnat2bids.overwrite) {
         lines.push(`    --overwrite`)
       }
-      if (this.verbose) {
+      if (this.xnat2bids.verbose) {
         lines.push(`    -v -v`)
       }
-      if (this.cleanup) {
+      if (this.xnat2bids.cleanup) {
         lines.push(`    --cleanup`)
       }
       if (this.seriesDictString.split('=')[2] !== `"")`) {

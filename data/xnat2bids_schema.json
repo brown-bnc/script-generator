@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "output_path": {
+      "type": "string"
+    },
+    "sessions":{
+      "type": "array"
+    },
+    "overwrite":{
+      "type": "boolean"
+    },
+    "verbose":{
+      "type": "boolean"
+    },
+    "cleanup":{
+      "type": "boolean"
+    },
+    "bidsmap":{
+      "type": "object",
+      "properties": {
+        "required": { "type": "boolean" },
+        "dir": { "type": "string" },
+        "file": { "type": "string" }
+      }
+    }
+  }
+}
